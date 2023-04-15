@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 
-const Shop = () =>{
+const Partners = () =>{
     return(
         <div>
-            I am shop
+            Aici sunt antreprenorii
             <Outlet/>
         </div>
     );
 }
 
-export default Shop;
+export default Partners;
