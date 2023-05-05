@@ -1,16 +1,16 @@
-// .partner-card-container {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   flex-direction: column;
-//   border-radius: 15px;
-//   box-shadow: 5px 5px 15px rgba(0,0,0,.5);
-//   height: 400px;
-//   padding: 30px 15px 15px;
-//   position: relative;
-//   text-align: center;
-//   overflow:hidden;
-//   width: 280px;
+.partner-card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.5);
+  height: 400px;
+  padding: 30px 15px 15px;
+  position: relative;
+  text-align: center;
+  overflow:hidden;
+  width: 280px;
 
   
 //   img {
@@ -67,12 +67,12 @@
 :root{
     --theme-color: #ff1756;
 }
-.container{
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-}
+// .container{
+//     position: absolute;
+//     transform: translate(-50%,-50%);
+//     top: 50%;
+//     left: 50%;
+// }
 .card{
     height: 420px;
     width: 320px;
@@ -141,4 +141,5 @@ img{
 .buttons button:last-child{
     background-color: transparent;
     color: var(--theme-color);
+}
 }
