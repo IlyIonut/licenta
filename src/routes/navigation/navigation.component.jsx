@@ -4,7 +4,8 @@ import { Fragment, useContext} from "react";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import './navigation.styles.scss';
+import { NavigationContainer , NavLink , NavLinksContainer , LogoContainer} from "./navigation.styles";
+//import './navigation.styles.scss';
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../context/cart.context";
 
@@ -15,26 +16,29 @@ const Navigation = () =>{
 
     return(
         <Fragment>
-            <div className="navigation">
-                <Link className="logo-container" to='/'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
                    <CrwnLogo className="logo" />
-                </Link>
+                </LogoContainer>
                 
-                <div className="nav-links-container">
-                    <Link className="nav-link" to='/shop'>
+                <NavLinksContainer>
+                    <NavLink to='/shop' >
                             SHOP
-                    </Link>
+                    </NavLink>
+                    <NavLink to='/profil' >
+                        Profil
+                    </NavLink>
                     {
                         currentUser ? (
-                            <span className="nav-link" onClick={signOutUser} >SIGN OUT</span>)
+                            <NavLink as='span' onClick={signOutUser} >SIGN OUT</NavLink>)
                             :
-                            (<Link className="nav-link" to='/auth'>SIGN IN</Link>)
+                            (<NavLink to='/auth' >SIGN IN</NavLink>)
                     }
                     <CartIcon/>
-                </div>
+                </NavLinksContainer>
                  { isCartOpen && <CartDropdown/>} 
             {/* daca ambele valori sunt adevarate atunci se va returna ultimul element ex cartdropdown */}
-            </div>
+            </NavigationContainer>
             <Outlet/>
         </Fragment>
     );
