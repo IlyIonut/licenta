@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const SideProfile = styled.div`
+    padding: 1rem; 
+    background-color: #ffffff; 
+    text-align: center; 
+    border-radius: 1rem; 
+    grid-column: span 12 / span 12; 
+
+
+
+    @media (min-width: 1024px) { 
+    grid-column: span 3 / span 3; 
+    }
+
+`
 
 export const Links = styled.div`
     display: flex; 
