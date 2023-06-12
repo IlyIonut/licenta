@@ -25,49 +25,17 @@ export const ProfileContainer = styled.div`
 
 export const SideProfile = styled.div`
     padding: 1rem; 
-    background-color: #ffffff; 
+    background-color: grey; 
     text-align: center; 
     border-radius: 1rem; 
-    grid-column: span 12 / span 12; 
-
+    width:20rem;
+    grid-column: span 3 / span 3;
 
 
     @media (min-width: 1024px) { 
     grid-column: span 3 / span 3; 
     }
-    h3 {
-        margin-top: 1rem;
-        margin-bottom: 1rem; 
-        font-weight: 500; 
-        letter-spacing: 0.05em; 
-    }
-    p {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem; 
-        padding-left: 0.5rem;
-        padding-right: 0.5rem; 
-        margin-top: 0.75rem;
-        margin-bottom: 0.75rem; 
-        background-color: #E5E7EB; 
-        border-radius: 9999px; 
-
-    }
-    a {
-        display: flex; 
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem; 
-        padding-left: 0.5rem;
-        padding-right: 0.5rem; 
-        margin-top: 0.75rem;
-        margin-bottom: 0.75rem; 
-        background-color: #E5E7EB; 
-        justify-content: center; 
-        align-items: center; 
-        border-radius: 9999px; 
-
-    }
-
-`
+ `
 
 export const ContinutContainer = styled.div`
         display: flex; 

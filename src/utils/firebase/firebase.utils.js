@@ -11,7 +11,7 @@ import {
 
 } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc  } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 
 const firebaseConfig = {
@@ -91,6 +91,10 @@ const firebaseConfig = {
           skills: additionalInformation.skills || [],
           description: additionalInformation.description || '',
           profileImage: additionalInformation.profileImage || null,
+          gitHubLink: additionalInformation.gitHubLink || null,
+          linkedinLink : additionalInformation.linkedinLink || null,
+          instagramLink : additionalInformation.instagramLink || null,
+          resume : additionalInformation.resume || null,
           ...additionalInformation,
         });
       } catch (error) {
@@ -117,7 +121,8 @@ const firebaseConfig = {
     }
   };
 
-  export const updateProfile = async (userId, newPhoneNumber, newBirthDate, newDisplayName, newmainOcupation, newDescription) =>{
+  export const updateProfile = async (userId, newPhoneNumber, newBirthDate, newDisplayName, newmainOcupation, newDescription,
+    newGitHubLink, newLinkedinLink, newInstagramLink) =>{
     const userDocRef = doc(db, 'users', userId.uid);
     try{
       await updateDoc(userDocRef, {
@@ -126,6 +131,9 @@ const firebaseConfig = {
         mainOcupation: newmainOcupation,
         displayName: newDisplayName,
         description: newDescription,
+        gitHubLink : newGitHubLink,
+        linkedinLink : newLinkedinLink,
+        instagramLink: newInstagramLink,
       });
       console.log('User profile updated successfully');
     } catch (error) {
@@ -133,50 +141,29 @@ const firebaseConfig = {
     }
   }
 
-  // export const updateUserBirthDate = async (userId, newBirthDate) => {
-  //   const userDocRef = doc(db, 'users', userId.uid);
+  const getImageNameFromURL = (file) => {
+    const fileName = file.substring(
+      file.lastIndexOf('/') + 1,
+      file.indexOf('?') !== -1 ? file.indexOf('?') : undefined
+    );
+    return fileName;
+  };
   
-  //   try {
-  //     await updateDoc(userDocRef, {
-  //       birthDate: newBirthDate,
-  //     });
-  //     console.log('User birth date updated successfully');
-  //   } catch (error) {
-  //     console.log('Error updating user birth date:', error.message);
-  //   }
-  // };
-
-  // export const updateMainOcupation = async (userId, newmainOcupation) =>{
-  //   const userDocRef = doc(db, 'users', userId.uid);
-  //   try{
-  //     await updateDoc(userDocRef, {
-  //       mainOcupation: newmainOcupation,
-  //     });
-  //     console.log('User mainOcupation updated successfully');
-  //   } catch (error) {
-  //     console.log('Error updating user mainOcupation:', error.message);
-  //   }
-  // };
-
-  // export const updateDisplayName = async (userId, newDisplayName) =>{
-  //   const userDocRef = doc(db, 'users', userId.uid);
-  //   try{
-  //     await updateDoc(userDocRef, {
-  //       displayName: newDisplayName,
-  //     });
-  //     console.log('User displayName updated successfully');
-  //   } catch (error) {
-  //     console.log('Error updating user displayName:', error.message);
-  //   }
-  // };
-
 
   export const UploadImage = async (selectedFile,userId) => {
     const userDocRef = doc(db, 'users', userId.uid);
     if(selectedFile) {
       try{
       const storageRef = getStorage();
-      const fileRef = ref(storageRef,selectedFile.name)
+      const fileRef = ref(storageRef,selectedFile.name);
+
+      const docSnap = await getDoc(userDocRef);
+      const oldImageURL = docSnap.data()?.profileImage;
+      if (oldImageURL) {
+        const oldImageRef = ref(storageRef, getImageNameFromURL(oldImageURL));
+        await deleteObject(oldImageRef);
+      }
+
       await uploadBytes(fileRef,selectedFile);
       const downloadURL = await getDownloadURL(fileRef);
      
@@ -191,7 +178,48 @@ const firebaseConfig = {
       };
     }
   }
+
+  const getFileNameFromURL = (url) => {
+    const startIndex = url.lastIndexOf('/') + 1;
+  const endIndex = url.indexOf('?');
+  let fileName = url.substring(startIndex, endIndex);
+  fileName = decodeURIComponent(fileName); // Decode URL-encoded characters
+  return fileName;
+  };
   
+  export const UploadResume = async (newResume,userId) => {
+    const userDocRef = doc(db, 'users', userId.uid);
+    console.log(newResume);
+    if(newResume) {
+      try{
+      const storageRef = getStorage();
+      const storageChildRef = ref(storageRef, `resumes/${newResume.name}`);
+
+      const docSnap = await getDoc(userDocRef);
+      const oldResumeURL = docSnap.data()?.resume;
+      if (oldResumeURL) {
+        const oldResumeFileName = getFileNameFromURL(oldResumeURL);
+        const oldResumeRef = ref(storageRef, `resumes/${oldResumeFileName}`);
+        await deleteObject(oldResumeRef);
+      }
+
+      await uploadBytes(storageChildRef,newResume);
+      const downloadURL = await getDownloadURL(storageChildRef);
+     
+      await updateDoc(userDocRef,{
+          resume: downloadURL,
+        });
+        
+      return downloadURL;
+      }
+      catch(error) {
+        console.log('Error uploading image:' , error.message);
+      };
+    }
+  }
+  
+
+
   export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
   

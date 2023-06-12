@@ -2,11 +2,49 @@ import styled from "styled-components";
 
 export const SideProfile = styled.div`
     padding: 1rem; 
-    background-color: #ffffff; 
+    background-color: black; 
     text-align: center; 
     border-radius: 1rem; 
     grid-column: span 12 / span 12; 
 
+    img {
+        margin-left: auto;
+        margin-right: auto; 
+        width: 8rem; 
+        height: 8rem; 
+        border-radius: 9999px; 
+    }
+    h3 {
+        margin-top: 1rem;
+        margin-bottom: 1rem; 
+        font-weight: 500; 
+        letter-spacing: 0.05em; 
+    }
+
+    p {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem; 
+        padding-left: 0.5rem;
+        padding-right: 0.5rem; 
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem; 
+        background-color: #E5E7EB; 
+        border-radius: 9999px; 
+    }
+
+    a {
+        display: flex; 
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem; 
+        padding-left: 0.5rem;
+        padding-right: 0.5rem; 
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem; 
+        background-color: #E5E7EB; 
+        justify-content: center; 
+        align-items: center; 
+        border-radius: 9999px;
+    }
 
 
     @media (min-width: 1024px) { 
@@ -35,4 +73,16 @@ export const Date = styled.div`
     margin-top: 1.25rem;
     margin-bottom: 1.25rem; 
     background-color: #E5E7EB; 
+`
+
+export const Button = styled.button`
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem; 
+    background-image: background-image: linear-gradient(to right, var(--tw-gradient-stops)); 
+    background-color: #60A5FA; 
+    color: #ffffff; 
+    width: 66.666667%; 
+    border-radius: 9999px; 
 `
