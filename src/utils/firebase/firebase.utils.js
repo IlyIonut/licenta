@@ -95,6 +95,8 @@ const firebaseConfig = {
           linkedinLink : additionalInformation.linkedinLink || null,
           instagramLink : additionalInformation.instagramLink || null,
           resume : additionalInformation.resume || null,
+          location : additionalInformation.location || null,
+          jobs : additionalInformation.jobs || [],
           ...additionalInformation,
         });
       } catch (error) {
@@ -121,25 +123,89 @@ const firebaseConfig = {
     }
   };
 
-  export const updateProfile = async (userId, newPhoneNumber, newBirthDate, newDisplayName, newmainOcupation, newDescription,
-    newGitHubLink, newLinkedinLink, newInstagramLink) =>{
+  // export const updateProfile = async (userId, newPhoneNumber, newBirthDate, newDisplayName, newmainOcupation, newDescription,
+  //   newGitHubLink, newLinkedinLink, newInstagramLink) =>{
+  //   const userDocRef = doc(db, 'users', userId.uid);
+  //   try{
+  //     await updateDoc(userDocRef, {
+  //       phoneNumber: newPhoneNumber,
+  //       birthDate: newBirthDate,
+  //       mainOcupation: newmainOcupation,
+  //       displayName: newDisplayName,
+  //       description: newDescription,
+  //       gitHubLink : newGitHubLink,
+  //       linkedinLink : newLinkedinLink,
+  //       instagramLink: newInstagramLink,
+  //     });
+  //     console.log('User profile updated successfully');
+  //   } catch (error) {
+  //     console.log('Error updating user profile:', error.message);
+  //   }
+  // }
+
+  export const updateProfile = async (
+    userId,
+    newPhoneNumber,
+    newBirthDate,
+    newDisplayName,
+    newMainOccupation,
+    newDescription,
+    newGitHubLink,
+    newLinkedinLink,
+    newInstagramLink,
+    newLocation,
+    skill,
+  ) => {
     const userDocRef = doc(db, 'users', userId.uid);
-    try{
-      await updateDoc(userDocRef, {
-        phoneNumber: newPhoneNumber,
-        birthDate: newBirthDate,
-        mainOcupation: newmainOcupation,
-        displayName: newDisplayName,
-        description: newDescription,
-        gitHubLink : newGitHubLink,
-        linkedinLink : newLinkedinLink,
-        instagramLink: newInstagramLink,
-      });
-      console.log('User profile updated successfully');
-    } catch (error) {
-      console.log('Error updating user profile:', error.message);
+    const userData = (await getDoc(userDocRef)).data();
+  
+    // Create an object to store the updated profile data
+    const updatedProfileData = {};
+  
+    // Compare and add changed data to updatedProfileData
+    if (newLocation !== userData.location) {
+      updatedProfileData.location = newLocation;
     }
-  }
+    if (newPhoneNumber !== userData.phoneNumber) {
+      updatedProfileData.phoneNumber = newPhoneNumber;
+    }
+    if (newBirthDate !== userData.birthDate) {
+      updatedProfileData.birthDate = newBirthDate;
+
+    }
+    if (newDisplayName !== userData.displayName) {
+      updatedProfileData.displayName = newDisplayName;
+    }
+    if (newMainOccupation !== userData.mainOcupation) {
+      updatedProfileData.mainOcupation = newMainOccupation;
+    }
+    if (newDescription !== userData.description) {
+      updatedProfileData.description = newDescription;
+    }
+    if (newGitHubLink !== userData.gitHubLink) {
+      updatedProfileData.gitHubLink = newGitHubLink;
+    }
+    if (newLinkedinLink !== userData.linkedinLink) {
+      updatedProfileData.linkedinLink = newLinkedinLink;
+    }
+    if (newInstagramLink !== userData.instagramLink) {
+      updatedProfileData.instagramLink = newInstagramLink;
+    }
+  
+    if (skill.trim() !== '') {
+      updatedProfileData.skills = [...userData.skills, skill.trim()];
+    }
+
+    // Only update the profile if there are changes
+    if (Object.keys(updatedProfileData).length > 0) {
+      try {
+        await updateDoc(userDocRef, updatedProfileData);
+        console.log('User profile updated successfully');
+      } catch (error) {
+        console.log('Error updating user profile:', error.message);
+      }
+    }
+  };
 
   const getImageNameFromURL = (file) => {
     const fileName = file.substring(
@@ -181,11 +247,12 @@ const firebaseConfig = {
 
   const getFileNameFromURL = (url) => {
     const startIndex = url.lastIndexOf('/') + 1;
-  const endIndex = url.indexOf('?');
-  let fileName = url.substring(startIndex, endIndex);
-  fileName = decodeURIComponent(fileName); // Decode URL-encoded characters
-  return fileName;
+    const endIndex = url.indexOf('?');
+    let fileName = url.substring(startIndex, endIndex);
+    fileName = fileName.replace('resumes%2F', ''); // Remove 'resumes%2F' from the file name
+    return fileName;
   };
+  
   
   export const UploadResume = async (newResume,userId) => {
     const userDocRef = doc(db, 'users', userId.uid);
@@ -197,7 +264,7 @@ const firebaseConfig = {
 
       const docSnap = await getDoc(userDocRef);
       const oldResumeURL = docSnap.data()?.resume;
-      if (oldResumeURL) {
+      if (oldResumeURL && !oldResumeURL.includes('undefined')) {
         const oldResumeFileName = getFileNameFromURL(oldResumeURL);
         const oldResumeRef = ref(storageRef, `resumes/${oldResumeFileName}`);
         await deleteObject(oldResumeRef);
@@ -218,6 +285,17 @@ const firebaseConfig = {
     }
   }
   
+  export const fetchUsers = async () => {
+    try {
+      const usersCollection = collection(db, 'users');
+      const querySnapshot = await getDocs(usersCollection);
+      const userData = querySnapshot.docs.map((doc) => doc.data());
+      return userData;
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      throw error;
+    }
+  };
 
 
   export const createAuthUserWithEmailAndPassword = async (email, password) => {

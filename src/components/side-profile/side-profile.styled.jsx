@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const SideProfile = styled.div`
-    padding: 1rem; 
-    background-color: black; 
-    text-align: center; 
-    border-radius: 1rem; 
-    grid-column: span 12 / span 12; 
+padding: 1rem;
+background-color: white;
+text-align: center;
+border-radius: 1rem;
+width: 20rem;
 
     img {
         margin-left: auto;

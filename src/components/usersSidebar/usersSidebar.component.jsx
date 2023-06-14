@@ -3,12 +3,11 @@ import {GoLocation} from 'react-icons/go'
 import {GiTie} from 'react-icons/gi'
 import { useState, useContext , useEffect} from 'react'
 import { UserContext } from '../../context/user.context'
-import { Date, SideProfile, Links, Button } from './side-profile.styled'
 import { getUserData } from '../../utils/firebase/firebase.utils'
 import {useTheme} from 'next-themes'
 //import Image from 'next/legacy/image'
 
-const Sidebar = () => {
+const UsersSidebar = ({user}) => {
 
     const {theme ,setTheme} = useTheme();
 
@@ -16,7 +15,7 @@ const Sidebar = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
-    const { currentUser } = useContext(UserContext);
+    //const { currentUser } = useContext(UserContext);
     const [profileData, setProfileData] = useState({
       profileImage: '',
       displayName: '',
@@ -27,14 +26,13 @@ const Sidebar = () => {
       linkedinLink:'',
       instagramLink:'',
       resume:'',
-      location:'',
 
     });
   
     useEffect(() => {
       const getUserProfile = async () => {
         try {
-          const fetchedProfileData = await getUserData(currentUser);
+          const fetchedProfileData = await getUserData(user);
           setProfileData(fetchedProfileData);
         } catch (error) {
           console.log('Error retrieving user profile:', error);
@@ -42,12 +40,22 @@ const Sidebar = () => {
       };
   
       getUserProfile();
-    }, [currentUser, profileData]);
+    }, [user, profileData]);
   
-    const { profileImage, displayName, email, mainOcupation , phoneNumber, gitHubLink, linkedinLink, instagramLink, resume, location} = profileData;
-    
+    const {
+      profileImage,
+      displayName,
+      email,
+      mainOcupation,
+      phoneNumber,
+      gitHubLink,
+      linkedinLink,
+      instagramLink,
+      resume,
+    } = user;
+
     return(
-      <div className='col-span-12 p-4 text-center text-white lg:h-2/3 bg-dark-500 lg:col-span-3 rounded-2xl shadow-custom-dark dark:shadow-custom-dark'>
+      <div className='col-span-12 p-4 text-center text-white bg-dark-500 lg:col-span-3 rounded-2xl shadow-custom-dark dark:shadow-custom-dark'>
             <img src={profileImage}
             alt={`${displayName}`}
             className='w-32 h-32 mx-auto rounded-full'
@@ -68,7 +76,7 @@ const Sidebar = () => {
             <div className='py-4 my-5 bg-dark-200 dark:bg-dark-200' style={{marginLeft:'-1rem',marginRight:'-1rem'}}>
                 <div className='flex justify-center space-x-2 idems-center'>
                     <GoLocation/>
-                    <span>{location}</span>
+                    <span>Cluj, Romania</span>
                 </div>
                 <p className='my-2'>{email}</p>
                 <p className='my-2'>{phoneNumber}</p>
@@ -81,6 +89,6 @@ const Sidebar = () => {
             <button onClick={changeTheme} className='w-8/12 py-2 my-2 text-white rounded-full bg-gradient-to-r from-green to-blue-400'>Toggle Themes</button>
         </div>
     )
-}
+  }
 
-export default Sidebar;
+export default UsersSidebar;

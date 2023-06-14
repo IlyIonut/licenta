@@ -15,16 +15,19 @@ const Navigation = () =>{
     const {isCartOpen} = useContext(CartContext);
 
     return(
-        <Fragment>
-            <NavigationContainer>
+        <div className="grid justify-items-center">
+            <div className='flex justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
                 <LogoContainer to='/'>
                    <CrwnLogo className="logo" />
                 </LogoContainer>
                 
                 <NavLinksContainer>
-                    <NavLink to='/shop' >
-                            SHOP
+                    <NavLink to='/users' >
+                            Users
                     </NavLink>
+                    {/* <NavLink to='/shop' >
+                            SHOP
+                    </NavLink> */}
                     <NavLink to='/profil' >
                         Profil
                     </NavLink>
@@ -34,13 +37,13 @@ const Navigation = () =>{
                             :
                             (<NavLink to='/auth' >SIGN IN</NavLink>)
                     }
-                    <CartIcon/>
+                    {/* <CartIcon/> */}
                 </NavLinksContainer>
-                 { isCartOpen && <CartDropdown/>} 
+                 {/* { isCartOpen && <CartDropdown/>}  */}
             {/* daca ambele valori sunt adevarate atunci se va returna ultimul element ex cartdropdown */}
-            </NavigationContainer>
+            </div>
             <Outlet/>
-        </Fragment>
+        </div>
     );
 }
 

@@ -1,14 +1,19 @@
 import { Outlet } from "react-router-dom";
+import { Container } from './home.styled';
 
 import Directory from "../../components/directory/directory.component";
+import Main from "../../components/Main/main.component";
 
 const Home = () => {
   
   return(
-    <div>
-    <Directory/>
-    <Outlet/>
-    </div>
+    
+<Container>
+  <Main/>
+  {/* <Directory /> */}
+  <Outlet />
+</Container>
+
   )
 }
 
