@@ -87,7 +87,7 @@ const firebaseConfig = {
           createdAt,
           phoneNumber: additionalInformation.phoneNumber || '',
           birthDate: additionalInformation.birthDate || null,
-          mainOccupation: additionalInformation.mainOcupation || null,
+          mainOccupation: additionalInformation.mainOcupation || 'Your occupation',
           skills: additionalInformation.skill || [],
           description: additionalInformation.description || '',
           profileImage: additionalInformation.profileImage || null,
