@@ -37,7 +37,7 @@ align-items:center;
 align-content:center;
 margin-left:20px;
 gap:20px;
-
+height:auto;
 `
 export const Card = styled.div`
     width:330px;

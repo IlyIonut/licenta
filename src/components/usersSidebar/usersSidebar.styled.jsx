@@ -29,6 +29,8 @@ background-size:cover;
 gap:5px;
 
     h5 {
+        display:inline-block;
+        white-space: nowrap;
         margin-top: 10px;
         margin-bottom: 150px; 
         font-weight: 500; 
