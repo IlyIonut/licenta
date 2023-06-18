@@ -28,7 +28,7 @@ const Navigation = () =>{
                     {/* <NavLink to='/shop' >
                             SHOP
                     </NavLink> */}
-                    <NavLink to='/profil' >
+                    <NavLink to='/myprofil' >
                         Profil
                     </NavLink>
                     {

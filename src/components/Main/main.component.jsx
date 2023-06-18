@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, Card } from "./main.styled";
+import { Row, Col, Button, Card, Container } from "./main.styled";
 import UsersSidebar from "../usersSidebar/usersSidebar.component";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import { useState,useEffect } from "react";
@@ -30,13 +30,13 @@ const Main = () =>  {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo deleniti eaque aliquid magni veniam magnam quisquam non rerum laborum impedit error numquam nam adipisci quaerat reprehenderit recusandae sint, hic cum?</p>
             <Button type="button" >Explore</Button>
           </Col>
-          <Col>
-            <Card>
-            {users.slice(0, 4).map((user) => (
+          <Container>
+            
+            {users.slice(0, 2).map((user) => (
               <UsersSidebar key={user.id} user={user} />
             ))}
-            </Card>
-          </Col>
+            
+          </Container>
       </Row>
 
     );

@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+
+export const Card = styled.div`
+    width:200px;
+    height:150px;
+    display:inline-block;
+    border-radius:10px;
+    padding:15px 25px;
+    box-sizing:border-box;
+    cursor:pointer;
+    transitions:transform 0.5s;
+    &:hover{
+        transform: translateY(-10px);
+    }
+`
 export const SideProfile = styled.div`
 padding: 40px 90px;
 background-color: white;

@@ -4,6 +4,7 @@ import Sidebar from '../../components/side-profile/side-profile.component';
 import UsersSidebar from '../../components/usersSidebar/usersSidebar.component';
 import { fetchUsers } from '../../utils/firebase/firebase.utils';
 import { UsersContainer } from './users.styled';
+import { Link } from 'react-router-dom';
 
 const UserSidebarPage = () => {
   const [users, setUsers] = useState([]);
@@ -25,7 +26,7 @@ const UserSidebarPage = () => {
   return (
     <UsersContainer>
       {users.map((user) => (
-        <UsersSidebar key={user.id} user={user} />
+        <UsersSidebar key={user.id} user={user}/>
       ))}
     </UsersContainer>
   );

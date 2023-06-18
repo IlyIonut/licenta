@@ -10,7 +10,7 @@ import {
   onAuthStateChanged,
 
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc  } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc,where  } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 
@@ -87,8 +87,8 @@ const firebaseConfig = {
           createdAt,
           phoneNumber: additionalInformation.phoneNumber || '',
           birthDate: additionalInformation.birthDate || null,
-          mainOcupation: additionalInformation.mainOcupation || null,
-          skills: additionalInformation.skills || [],
+          mainOccupation: additionalInformation.mainOcupation || null,
+          skills: additionalInformation.skill || [],
           description: additionalInformation.description || '',
           profileImage: additionalInformation.profileImage || null,
           gitHubLink: additionalInformation.gitHubLink || null,
@@ -96,7 +96,8 @@ const firebaseConfig = {
           instagramLink : additionalInformation.instagramLink || null,
           resume : additionalInformation.resume || null,
           location : additionalInformation.location || null,
-          jobs : additionalInformation.jobs || [],
+          jobs : additionalInformation.job || [],
+          faculty: additionalInformation.faculty || null,
           ...additionalInformation,
         });
       } catch (error) {
@@ -154,7 +155,9 @@ const firebaseConfig = {
     newLinkedinLink,
     newInstagramLink,
     newLocation,
-    skill,
+    newSkill,
+    newJob,
+    newFaculty
   ) => {
     const userDocRef = doc(db, 'users', userId.uid);
     const userData = (await getDoc(userDocRef)).data();
@@ -163,39 +166,44 @@ const firebaseConfig = {
     const updatedProfileData = {};
   
     // Compare and add changed data to updatedProfileData
-    if (newLocation !== userData.location) {
+    if (newLocation && newLocation !== userData.location) {
       updatedProfileData.location = newLocation;
     }
-    if (newPhoneNumber !== userData.phoneNumber) {
+    if (newPhoneNumber && newPhoneNumber !== userData.phoneNumber) {
       updatedProfileData.phoneNumber = newPhoneNumber;
     }
-    if (newBirthDate !== userData.birthDate) {
+    if (newBirthDate && newBirthDate !== userData.birthDate) {
       updatedProfileData.birthDate = newBirthDate;
-
     }
-    if (newDisplayName !== userData.displayName) {
+    if (newDisplayName && newDisplayName !== userData.displayName) {
       updatedProfileData.displayName = newDisplayName;
     }
-    if (newMainOccupation !== userData.mainOcupation) {
-      updatedProfileData.mainOcupation = newMainOccupation;
+    if (newMainOccupation && newMainOccupation !== userData.mainOccupation) {
+      updatedProfileData.mainOccupation = newMainOccupation;
     }
-    if (newDescription !== userData.description) {
+    if (newDescription && newDescription !== userData.description) {
       updatedProfileData.description = newDescription;
     }
-    if (newGitHubLink !== userData.gitHubLink) {
+    if (newGitHubLink && newGitHubLink !== userData.gitHubLink) {
       updatedProfileData.gitHubLink = newGitHubLink;
     }
-    if (newLinkedinLink !== userData.linkedinLink) {
+    if (newLinkedinLink && newLinkedinLink !== userData.linkedinLink) {
       updatedProfileData.linkedinLink = newLinkedinLink;
     }
-    if (newInstagramLink !== userData.instagramLink) {
+    if (newInstagramLink && newInstagramLink !== userData.instagramLink) {
       updatedProfileData.instagramLink = newInstagramLink;
     }
-  
-    if (skill.trim() !== '') {
-      updatedProfileData.skills = [...userData.skills, skill.trim()];
+    if (newFaculty && newFaculty !== userData.faculty) {
+      updatedProfileData.faculty = newFaculty;
     }
-
+  
+    if (Array.isArray(newSkill) && newSkill.length > 0) {
+      updatedProfileData.skills = newSkill;
+    }
+    if (Array.isArray(newJob) && newJob.length > 0) {
+      updatedProfileData.jobs = newJob;
+    }
+  
     // Only update the profile if there are changes
     if (Object.keys(updatedProfileData).length > 0) {
       try {
@@ -246,10 +254,12 @@ const firebaseConfig = {
   }
 
   const getFileNameFromURL = (url) => {
-    const startIndex = url.lastIndexOf('/') + 1;
+    const startIndex = url.indexOf('resumes%2F') + 'resumes%2F'.length;
+    //const startIndex = url.lastIndexOf('/') + 1;
     const endIndex = url.indexOf('?');
     let fileName = url.substring(startIndex, endIndex);
-    fileName = fileName.replace('resumes%2F', ''); // Remove 'resumes%2F' from the file name
+    fileName = decodeURIComponent(fileName); // Decode the URL-encoded file name
+    //fileName = fileName.replace('resumes%2F', 'resumes/'); // Remove 'resumes%2F' from the file name
     return fileName;
   };
   
@@ -293,6 +303,27 @@ const firebaseConfig = {
       return userData;
     } catch (error) {
       console.error('Error fetching user data:', error);
+      throw error;
+    }
+  };
+
+  export const fetchUserData = async (displayName) => {
+    try {
+      const db = getFirestore();
+      const usersRef = collection(db, 'users');
+      const q = query(usersRef, where('displayName', '==', displayName));
+      const querySnapshot = await getDocs(q);
+  
+      if (!querySnapshot.empty) {
+        const userDoc = querySnapshot.docs[0];
+        return userDoc.data();
+      } else {
+        return null;
+        // Handle case when user is not found
+      }
+    } catch (error) {
+      console.log('Error fetching user data:', error);
+      // Handle error
       throw error;
     }
   };

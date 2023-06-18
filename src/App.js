@@ -7,6 +7,7 @@ import Authentification from "./routes/authentification/authentification.compone
 import Checkout from "./routes/checkout/checkout.component";
 import Profil from "./routes/profil/profil.component";
 import UserSidebarPage from "./routes/users/users.component";
+import UserProfil from "./routes/userprofil/userprofil.component";
 import "./App.css"
 import ParticlesBg from "particles-bg";
 
@@ -18,10 +19,11 @@ const App = () => {
       <Route path='/' element={<Navigation/>}>
         <Route index element={<Home/>}/>
         <Route path='users/*' element={<UserSidebarPage/>} />
+        <Route path="users/profil/:displayName" element={<UserProfil  />} />
         <Route path='shop/*' element={<Shop/>} />
         <Route path='auth' element={<Authentification/>} />
         <Route path='checkout' element={<Checkout/>} />
-        <Route path='profil' element={<Profil/>} />
+        <Route path='myprofil' element={<Profil/>} />
       </Route>
     </Routes>
     </div>

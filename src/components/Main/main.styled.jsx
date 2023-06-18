@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Row = styled.div`
     display:flex;
+    justify-content:center;
     height:88%;
     align-items:center;
 `
@@ -28,16 +29,27 @@ export const Button = styled.button`
     outline:none;
     margin-top:30px;
 `
+export const Container = styled.div`
+display:flex;
+flex-direction:row;
+justify-content:center;
+align-items:center;
+align-content:center;
+margin-left:20px;
+gap:20px;
+width:auto;
+height:auto;
 
+`
 export const Card = styled.div`
-    width:200px;
-    height:230px;
-    display:inline-block;
+    width:330px;
+    height:330px;
     border-radius:10px;
     padding:15px 25px;
     box-sizing:border-box;
     cursor:pointer;
     transitions:transform 0.5s;
+    resize: both;
     &:hover{
         transform: translateY(-10px);
     }
