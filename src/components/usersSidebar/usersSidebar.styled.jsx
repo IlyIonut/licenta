@@ -15,24 +15,24 @@ export const Card = styled.div`
     }
 `
 export const SideProfile = styled.div`
-padding: 40px 90px;
+padding: 20px 30px;
 background-color: white;
 display:flex;
 flex-flow:column wrap;
-justify-content:flex-end;
-align-content:flex-end;
 align-items:center;
 text-align: center;
 border-radius: 20px;
 background-position:center;
 background-size:cover;
 gap:5px;
+width:300px;
+height:450px;
 
     h5 {
         display:inline-block;
         white-space: nowrap;
-        margin-top: 10px;
-        margin-bottom: 150px; 
+        margin-top: 80px;
+        margin-bottom: 10px; 
         font-weight: 500; 
         letter-spacing: 0.05em; 
         background-color: #fff; 
@@ -64,7 +64,7 @@ gap:5px;
         margin-top: 0.75rem;
         margin-bottom: 0.75rem; 
         //background-color: #E5E7EB; 
-        justify-content: center; 
+        justify-content: flex-end; 
         align-items: end; 
         //border-radius: 9999px;
     }
