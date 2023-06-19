@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SideProfile = styled.div`
-padding: 40px 90px;
+padding: 40px 30px;
 background-color: white;
 display:flex;
 flex-flow:column wrap;
@@ -15,8 +15,8 @@ background-size:cover;
 gap:5px;
 
     h5 {
-        margin-top: 10px;
-        margin-bottom: 150px; 
+        margin-top: 150px;
+        margin-bottom: 10px; 
         font-weight: 500; 
         letter-spacing: 0.05em; 
         background-color: #fff; 
@@ -48,9 +48,9 @@ gap:5px;
         margin-top: 0.75rem;
         margin-bottom: 0.75rem; 
         //background-color: #E5E7EB; 
-        justify-content: center; 
+        justify-content: flex-end; 
         align-items: end; 
-        //border-radius: 9999px;
+        border-radius: 9999px;
     }
 
 
@@ -64,7 +64,7 @@ gap:5px;
 `
 
 export const Links = styled.div`
-    display: flex; 
+    display: flex-row; 
     margin-left: auto;
     margin-right: auto; 
     margin-top: 1000px;
@@ -72,6 +72,7 @@ export const Links = styled.div`
     justify-content: space-around; 
     align-items:flex-end;
     width: 75%; 
+    
 
 
     @media (min-width: 768px) { 
