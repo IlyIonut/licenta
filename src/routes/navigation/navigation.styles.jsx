@@ -21,6 +21,7 @@ export const NavLinksContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      margin-right:10px;
 `
 export const NavLink = styled(Link)`
         padding: 10px 15px;

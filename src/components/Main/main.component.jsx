@@ -3,6 +3,7 @@ import { Row, Col, Button, Card, Container } from "./main.styled";
 import UsersSidebar from "../usersSidebar/usersSidebar.component";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Main = () =>  {
 
@@ -23,12 +24,14 @@ const Main = () =>  {
       }, []);
 
 
+      const navigate = useNavigate();
+
     return (
       <Row>
           <Col>
             <h1>Licenta</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo deleniti eaque aliquid magni veniam magnam quisquam non rerum laborum impedit error numquam nam adipisci quaerat reprehenderit recusandae sint, hic cum?</p>
-            <Button type="button" >Explore</Button>
+            <Button onClick={()=>{navigate('/users')}} type="button" >Explore</Button>
           </Col>
           <Container>
             

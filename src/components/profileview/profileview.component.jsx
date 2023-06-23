@@ -424,7 +424,7 @@ const Profileview = () => {
 
       await UploadResume(newresume, currentUser);
       console.log('Resume saved');
-
+      alert('Profile Saved');
       // Additional actions or logic after profile updates
     } catch (error) {
       console.log('Error saving profile:', error);
