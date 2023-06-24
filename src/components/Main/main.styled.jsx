@@ -5,17 +5,47 @@ export const Row = styled.div`
     justify-content:center;
     height:88%;
     align-items:center;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        margin-left:20px;
+      }
 `
 
 export const Col = styled.div`
     flex-basis:50%;
     h1{
         font-size:100px;
+        font-weight:bold;
+        color: black;
+        -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: black;
     }
-    p1{
-        font-size:11px;
-        line-height:15px;
+    p{
+        font-size:24px;
     }
+    @media (max-width: 768px) {
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+        align-content:center;
+        h1{
+            margin-top:50px;
+            margin-bottom:20px;
+            margin-left:10px;
+            font-size:50px;
+            font-weight:bold;
+            color: black;
+            -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+        p{
+            font-size:8px;
+            padding-left:20px;
+        }
+      }
 `
 
 export const Button = styled.button`
@@ -28,6 +58,14 @@ export const Button = styled.button`
     border-radius: 20px;
     outline:none;
     margin-top:30px;
+    @media (max-width: 768px) {
+        width:100px;
+        height:30px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+    }
 `
 export const Container = styled.div`
 display:flex;
@@ -38,17 +76,7 @@ align-content:center;
 margin-left:20px;
 gap:20px;
 height:auto;
-`
-export const Card = styled.div`
-    width:330px;
-    height:330px;
-    border-radius:10px;
-    padding:15px 25px;
-    box-sizing:border-box;
-    cursor:pointer;
-    transitions:transform 0.5s;
-    resize: both;
-    &:hover{
-        transform: translateY(-10px);
-    }
+@media (max-width: 768px) {
+    //flex-direction: column;
+  }
 `

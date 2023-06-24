@@ -42,6 +42,9 @@ height:450px;
         padding-bottom: 0.2rem; 
         padding-left: 1rem;
         padding-right: 1rem; 
+        @media (max-width: 768px) {
+            font-size:8px;
+          }
     }
 
     p {
@@ -53,6 +56,9 @@ height:450px;
         //margin-bottom: 0.75rem; 
         background-color: #E5E7EB; 
         border-radius: 9999px; 
+        @media (max-width: 768px) {
+            font-size:8px;
+          }
     }
 
     a {
@@ -67,6 +73,14 @@ height:450px;
         justify-content: flex-end; 
         align-items: end; 
         //border-radius: 9999px;
+        @media (max-width: 768px) { 
+            padding-top: 0.05rem;
+            padding-bottom: 0.05rem; 
+            padding-left: 0.2rem;
+            padding-right: 0.2rem; 
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
     }
 
 
@@ -77,6 +91,10 @@ height:450px;
     &:hover{
         cursor:pointer;
     }
+    @media (max-width: 768px) {
+        width:150px;
+        height:225px;
+      }
 `
 
 export const Links = styled.div`
@@ -92,6 +110,9 @@ export const Links = styled.div`
 
     @media (min-width: 768px) { 
     width: 100%; 
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto; 
     }
 `
 export const Date = styled.div`
@@ -122,6 +143,11 @@ export const Button = styled.button`
     align-content: center;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+        font-size:8px;
+        height: 20px;
+        font-weight: 50;
+      }
 `
 
 export const ProfileBottom = styled(SideProfile)`

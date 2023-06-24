@@ -5,7 +5,12 @@ padding: 1rem;
 display:flex;
 justify-content:space-betweeen;
 `
-
+export const AuthContainer = styled.div`
+    display:flex;
+    justify-content: space-between;
+    width: 900px;
+    margin:30px auto;
+`
 
 export const ProfileContainer = styled.div`
     display: grid;

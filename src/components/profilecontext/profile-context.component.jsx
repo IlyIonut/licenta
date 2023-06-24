@@ -1,7 +1,10 @@
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../context/user.context';
 import { getUserData } from '../../utils/firebase/firebase.utils';
-import { ProfileHeader, ProfileContainer, ProfileInfo, ProfileSkillsList, ProfileSection ,ProfileSectionTitle} from './profilecontext.styled';
+import { ProfileHeader, ProfileContainer, ProfileInfo, ProfileSkillsList, ProfileSection ,ProfileSectionTitle, Download} from './profilecontext.styled';
+import {GoLocation} from 'react-icons/go'
+import {GiTie} from 'react-icons/gi'
+
 
 const ProfileContext = ({ user }) => {
   const [profileData, setProfileData] = useState({
@@ -54,7 +57,7 @@ const ProfileContext = ({ user }) => {
       <ProfileHeader>
         <ProfileInfo>
           <h2>{displayName}</h2>
-          <p>{email}</p>
+          <h2>-</h2>
           <p>{mainOccupation}</p>
         </ProfileInfo>
       </ProfileHeader>
@@ -64,12 +67,14 @@ const ProfileContext = ({ user }) => {
           <p>{description}</p>
         </ProfileSection>
         <ProfileSection>
-          <ProfileSectionTitle>Contact</ProfileSectionTitle>
-          <p>{phoneNumber}</p>
-          <p>{email}</p>
-          <p>{location}</p>
-          <a className='flex items-center justify-center px-2 py-1 my-3 bg-white rounded-full dark:bg-dark-200' 
-            href={resume} download={`${displayName}.pdf`} target="_blank" rel="noreferrer">Download Resume</a>
+          <ProfileSectionTitle>Contact</ProfileSectionTitle> 
+          <p>Phone Number: {phoneNumber}</p>
+          <p>Email: {email}</p>
+          <div className='flex space-x-2 items-center mx-2' >
+            <GoLocation/>
+            <span>{location}</span>
+          </div>
+   
         </ProfileSection>
         <ProfileSection>
           <ProfileSectionTitle>Skills</ProfileSectionTitle>
@@ -94,7 +99,20 @@ const ProfileContext = ({ user }) => {
               ))}
             </ProfileSkillsList>
           )}
+          
         </ProfileSection>
+        <div className='flex items-center justify-center'>
+        
+        <Download
+        className=""
+        href={resume}
+        download={`${displayName}.pdf`}
+        target="_blank"
+        rel="noreferrer"
+        >
+        <p className="text-center">Download Resume</p>
+        </Download>
+        </div>      
       </div>
     </ProfileContainer>
   );

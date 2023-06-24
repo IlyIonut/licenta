@@ -15,7 +15,7 @@ const Navigation = () =>{
     const {isCartOpen} = useContext(CartContext);
 
     return(
-        <div className="grid justify-items-center">
+        <div className="grid justify-items-center sm:justify-content-center">
             <div className='flex justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
                 <LogoContainer to='/'>
                    <CrwnLogo className="logo" />
@@ -29,7 +29,7 @@ const Navigation = () =>{
                             SHOP
                     </NavLink> */}
                     <NavLink to='/myprofil' >
-                        Profil
+                        Profile
                     </NavLink>
                     {
                         currentUser ? (

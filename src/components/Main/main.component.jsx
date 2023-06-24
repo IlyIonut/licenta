@@ -29,8 +29,8 @@ const Main = () =>  {
     return (
       <Row>
           <Col>
-            <h1>Licenta</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo deleniti eaque aliquid magni veniam magnam quisquam non rerum laborum impedit error numquam nam adipisci quaerat reprehenderit recusandae sint, hic cum?</p>
+            <h1>SkillConnect</h1>
+            <p>Create connections with new people depending on the skills you are looking for. Find partners, mentors or why not even new friends!</p>
             <Button onClick={()=>{navigate('/users')}} type="button" >Explore</Button>
           </Col>
           <Container>

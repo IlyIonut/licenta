@@ -89,7 +89,7 @@ const UserSidebarPage = () => {
               <Input
                 className=""
                 type="search"
-                placeholder="Search user"
+                placeholder="Search by skills"
                 onChange={onSearchChange}
               />
               <span className="input-group-btn">
