@@ -44,6 +44,8 @@ height:450px;
         padding-right: 1rem; 
         @media (max-width: 768px) {
             font-size:8px;
+            margin-top: 45px;
+            margin-bottom: 0px;
           }
     }
 
@@ -58,6 +60,7 @@ height:450px;
         border-radius: 9999px; 
         @media (max-width: 768px) {
             font-size:8px;
+            margin-bottom: 10px;
           }
     }
 
@@ -93,7 +96,7 @@ height:450px;
     }
     @media (max-width: 768px) {
         width:150px;
-        height:225px;
+        height:225px; 
       }
 `
 
@@ -112,7 +115,8 @@ export const Links = styled.div`
     width: 100%; 
     margin-top: 0px;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
+    
     }
 `
 export const Date = styled.div`
@@ -145,8 +149,10 @@ export const Button = styled.button`
     align-items: center;
     @media (max-width: 768px) {
         font-size:8px;
-        height: 20px;
-        font-weight: 50;
+        height: 15px;
+        font-weight: 500;
+        width:50px;
+        padding: 0px 0px;
       }
 `
 

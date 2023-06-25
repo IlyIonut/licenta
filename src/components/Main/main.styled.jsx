@@ -7,7 +7,6 @@ export const Row = styled.div`
     align-items:center;
     @media (max-width: 768px) {
         flex-direction: column;
-        margin-left:20px;
       }
 `
 
@@ -31,9 +30,9 @@ export const Col = styled.div`
         align-items:center;
         align-content:center;
         h1{
-            margin-top:50px;
+            margin-top:0px;
             margin-bottom:20px;
-            margin-left:10px;
+            margin-left:0px;
             font-size:50px;
             font-weight:bold;
             color: black;
@@ -77,6 +76,7 @@ margin-left:20px;
 gap:20px;
 height:auto;
 @media (max-width: 768px) {
-    //flex-direction: column;
+    margin-top:20px;
+    margin-left:0px;
   }
 `
