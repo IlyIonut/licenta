@@ -202,6 +202,15 @@ const Profileview = () => {
           placeholder="Edit your Main Occupation"
         />
       </div>
+      <div className="p-5">
+        <label className="block mb-2 text-lg font-bold">Faculty:</label>
+        <input
+          type="text"
+          value={newFaculty}
+          onChange={(e) => setNewFaculty(e.target.value)}
+          placeholder="Edit your Faculty"
+        />
+      </div>
       <div className="h-64 p-5">
         <label className="block w-full mb-2 text-lg font-bold h-fit">Description:</label>
         <textarea

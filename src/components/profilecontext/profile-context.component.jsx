@@ -21,6 +21,7 @@ const ProfileContext = ({ user }) => {
     location: '',
     skills: [],
     jobs: [],
+    faculty:'',
   });
 
   useEffect(() => {
@@ -50,6 +51,7 @@ const ProfileContext = ({ user }) => {
     location,
     skills,
     jobs,
+    faculty,
   } = user;
 
   return (
@@ -59,8 +61,11 @@ const ProfileContext = ({ user }) => {
           <h2>{displayName}</h2>
           <h2>-</h2>
           <p>{mainOccupation}</p>
+          
         </ProfileInfo>
+        
       </ProfileHeader>
+      <p>{faculty}</p>
       <div className="profile-body">
         <ProfileSection>
           <ProfileSectionTitle>About</ProfileSectionTitle>

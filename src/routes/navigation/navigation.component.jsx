@@ -4,7 +4,7 @@ import { Fragment, useContext} from "react";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { NavigationContainer , NavLink , NavLinksContainer , LogoContainer} from "./navigation.styles";
+import {NavTotal, NavigationContainer , NavLink , NavLinksContainer , LogoContainer} from "./navigation.styles";
 //import './navigation.styles.scss';
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../context/cart.context";
@@ -15,8 +15,8 @@ const Navigation = () =>{
     const {isCartOpen} = useContext(CartContext);
 
     return(
-        <div className="grid justify-items-center sm:justify-content-center">
-            <div className='flex justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+        <NavTotal>
+            <div className='flex items-center justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
                 <LogoContainer to='/'>
                    <CrwnLogo className="logo" />
                 </LogoContainer>
@@ -43,7 +43,7 @@ const Navigation = () =>{
             {/* daca ambele valori sunt adevarate atunci se va returna ultimul element ex cartdropdown */}
             </div>
             <Outlet/>
-        </div>
+        </NavTotal>
     );
 }
 
