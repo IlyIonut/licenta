@@ -3,7 +3,7 @@ import { UserContext } from '../../context/user.context';
 import Sidebar from '../../components/side-profile/side-profile.component';
 import UsersSidebar from '../../components/usersSidebar/usersSidebar.component';
 import { fetchUsers } from '../../utils/firebase/firebase.utils';
-import { UsersContainer } from './users.styled';
+import { UsersContainer, UsersPageContainer } from './users.styled';
 import { Link } from 'react-router-dom';
 import { SearchBox,Row,Column ,InputGroup,Input} from './users.styled';
 
@@ -68,7 +68,7 @@ const UserSidebarPage = () => {
   });
 
   return (
-    <>
+    <UsersPageContainer>
       <SearchBox>
     
    
@@ -106,7 +106,7 @@ const UserSidebarPage = () => {
           <UsersSidebar key={user.id} user={user} />
         ))}
       </UsersContainer>
-    </>
+    </UsersPageContainer>
   );
 };
 

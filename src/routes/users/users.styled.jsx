@@ -1,5 +1,16 @@
 import styled from "styled-components";
 
+export const UsersPageContainer = styled.div`
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    place-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+`
+
+
 export const UsersContainer = styled.div`
 display:flex;
 flex-wrap: wrap;
