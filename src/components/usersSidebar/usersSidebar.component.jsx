@@ -98,7 +98,7 @@ const UsersSidebar = ({user}) => {
                   <Button
                   // className='w-8/12 py-2 my-2 text-white rounded-full bg-gradient-to-r from-green to-blue-400 focus:outline-none'
                   >
-                  Profile
+                  <span>View Profile</span>
                   </Button>
               </Link>
             {/* <ProfileBottom >

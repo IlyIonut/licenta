@@ -62,6 +62,11 @@ height:450px;
             font-size:8px;
             margin-bottom: 10px;
           }
+          
+    }
+    span{
+        display: inline-block;
+        white-space: nowrap;
     }
 
     a {

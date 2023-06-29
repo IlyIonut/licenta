@@ -98,6 +98,7 @@ const firebaseConfig = {
           location : additionalInformation.location || null,
           jobs : additionalInformation.job || [],
           faculty: additionalInformation.faculty || null,
+          languages : additionalInformation.languages || null,
           ...additionalInformation,
         });
       } catch (error) {
@@ -157,7 +158,8 @@ const firebaseConfig = {
     newLocation,
     newSkill,
     newJob,
-    newFaculty
+    newFaculty,
+    newLanguage,
   ) => {
     const userDocRef = doc(db, 'users', userId.uid);
     const userData = (await getDoc(userDocRef)).data();
@@ -195,6 +197,9 @@ const firebaseConfig = {
     }
     if (newFaculty && newFaculty !== userData.faculty) {
       updatedProfileData.faculty = newFaculty;
+    }
+    if (newLanguage && newLanguage !== userData.languages) {
+      updatedProfileData.languages = newLanguage;
     }
   
     if (Array.isArray(newSkill) && newSkill.length > 0) {

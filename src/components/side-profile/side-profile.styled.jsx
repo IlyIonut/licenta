@@ -52,6 +52,10 @@ gap:5px;
         align-items: end; 
         border-radius: 9999px;
     }
+    span{
+        display: inline-block;
+        white-space: nowrap;
+    }
 
 
     @media (min-width: 1024px) { 

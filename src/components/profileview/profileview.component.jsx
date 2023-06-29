@@ -43,6 +43,8 @@ const Profileview = () => {
     location: currentUser.location,
     skills: currentUser?.skills || [],
     jobs: currentUser?.jobs || [],
+    faculty: currentUser.faculty,
+    languages:currentUser.languages,
   });
 
   const [newdate, setDate] = useState(currentUser.date || '');
@@ -59,6 +61,7 @@ const Profileview = () => {
   const [newSkill, setNewSkill] = useState(profileData.skills || []);
   const [newJob, setNewJob] = useState(profileData.jobs || []);
   const [newFaculty, setNewFaculty] = useState(currentUser.faculty || '');
+  const [newLanguage, setNewLanguage] = useState(currentUser.languages || '');
   const newBirthDate = newdate;
   
   useEffect(() => {
@@ -93,7 +96,8 @@ const Profileview = () => {
         newlocation,
         newSkill,
         newJob,
-        newFaculty
+        newFaculty,
+        newLanguage,
       );
       console.log('Profile saved');
 
@@ -211,6 +215,15 @@ const Profileview = () => {
           placeholder="Edit your Faculty"
         />
       </div>
+      <div className="p-5">
+        <label className="block mb-2 text-lg font-bold">Known languages:</label>
+        <input
+          type="text"
+          value={newLanguage}
+          onChange={(e) => setNewLanguage(e.target.value)}
+          placeholder="Edit your known languages"
+        />
+      </div>
       <div className="h-64 p-5">
         <label className="block w-full mb-2 text-lg font-bold h-fit">Description:</label>
         <textarea
@@ -287,14 +300,14 @@ const Profileview = () => {
         </button>
       </div>
       <div className="p-5">
-        <label className="block mb-2 text-lg font-bold">Job:</label>
-        {jobs && jobs.map((job, index) => (
+        <label className="block mb-2 text-lg font-bold">Add a new job:</label>
+        {newJob.map((job, index) => (
           <div key={index} className="flex items-center mb-2">
             <input
               type="text"
               value={job}
               onChange={(e) => handleJobChange(index, e.target.value)}
-              placeholder="Enter Job"
+              placeholder="Enter job"
             />
             <button
               className="ml-2 text-red-500"
@@ -304,6 +317,7 @@ const Profileview = () => {
             </button>
           </div>
         ))}
+        
         <button className="text-green-500" onClick={handleAddJob}>
           Add Job
         </button>

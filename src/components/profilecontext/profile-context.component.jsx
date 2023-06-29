@@ -52,6 +52,7 @@ const ProfileContext = ({ user }) => {
     skills,
     jobs,
     faculty,
+    languages,
   } = user;
 
   return (
@@ -79,10 +80,11 @@ const ProfileContext = ({ user }) => {
             <GoLocation/>
             <span>{location}</span>
           </div>
-   
+          
         </ProfileSection>
         <ProfileSection>
           <ProfileSectionTitle>Skills</ProfileSectionTitle>
+          <p>Known languages:{languages}</p>
           {skills && skills.length === 0 ? (
             <p>No skills added yet.</p>
           ) : (
