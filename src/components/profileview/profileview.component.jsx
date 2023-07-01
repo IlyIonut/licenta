@@ -79,10 +79,7 @@ const Profileview = () => {
 
   const handleProfileUpdate = async () => {
     try {
-      console.log('ansjdnckjd');
       await UploadImage(newselectedFile, currentUser);
-      console.log('Image saved');
-
       await updateProfile(
         currentUser,
         newphoneNumber,
@@ -99,12 +96,8 @@ const Profileview = () => {
         newFaculty,
         newLanguage,
       );
-      console.log('Profile saved');
-
       await UploadResume(newresume, currentUser);
-      console.log('Resume saved');
       alert('Profile Saved');
-      // Additional actions or logic after profile updates
     } catch (error) {
       console.log('Error saving profile:', error);
     }
@@ -193,10 +186,7 @@ const Profileview = () => {
           placeholder="Edit your Phone Number"
         />
       </div>
-      <div className="p-5">
-        <label className="block mb-2 text-lg font-bold">Birth Date:</label>
-        <DatePicker selected={newdate} onChange={(date) => setDate(date)} />
-      </div>
+      
       <div className="p-5">
         <label className="block mb-2 text-lg font-bold">Main Occupation:</label>
         <input

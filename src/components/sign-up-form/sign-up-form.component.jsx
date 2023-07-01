@@ -24,8 +24,6 @@ const SignUpForm = () => {
   const navigate = useNavigate();
 
 
-
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };

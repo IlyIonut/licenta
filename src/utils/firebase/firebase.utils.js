@@ -120,31 +120,12 @@ const firebaseConfig = {
       return docSnap.data();
       
     } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+      console.log('No such document!');
+      return null; // Return null or handle the case when the document doesn't exist
     }
   };
 
-  // export const updateProfile = async (userId, newPhoneNumber, newBirthDate, newDisplayName, newmainOcupation, newDescription,
-  //   newGitHubLink, newLinkedinLink, newInstagramLink) =>{
-  //   const userDocRef = doc(db, 'users', userId.uid);
-  //   try{
-  //     await updateDoc(userDocRef, {
-  //       phoneNumber: newPhoneNumber,
-  //       birthDate: newBirthDate,
-  //       mainOcupation: newmainOcupation,
-  //       displayName: newDisplayName,
-  //       description: newDescription,
-  //       gitHubLink : newGitHubLink,
-  //       linkedinLink : newLinkedinLink,
-  //       instagramLink: newInstagramLink,
-  //     });
-  //     console.log('User profile updated successfully');
-  //   } catch (error) {
-  //     console.log('Error updating user profile:', error.message);
-  //   }
-  // }
-
+  
   export const updateProfile = async (
     userId,
     newPhoneNumber,
@@ -168,7 +149,7 @@ const firebaseConfig = {
     const updatedProfileData = {};
   
     // Compare and add changed data to updatedProfileData
-    if (newLocation && newLocation !== userData.location) {
+    if (newLocation && (newLocation !== userData.location)) {
       updatedProfileData.location = newLocation;
     }
     if (newPhoneNumber && newPhoneNumber !== userData.phoneNumber) {

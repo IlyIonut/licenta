@@ -3,15 +3,20 @@ import styled from "styled-components";
 export const ProfileContainer = styled.div`
   max-width: full;
   margin: 0 40px;
+  margin-top: 25px;
   padding: 20px;
   border-radius: 8px;
 `;
 
 export const ProfileHeader = styled.div`
   display: flex;
-  flex-direction:row;
-  align-items: center;
+  flex-direction:column;
+  align-items: start;
   margin-bottom: 20px;
+  p{
+    font-size: 20px;
+    font-weight:semi-bold;
+  }
 `;
 
 export const ProfileImage = styled.div`
@@ -30,7 +35,7 @@ export const ProfileInfo = styled.div`
   align-items: center;
   h2 {
     font-size: 32px;
-    font-weight:semi-bold;
+    font-weight:bold;
     margin-bottom: 5px;
     margin-right:20px;
   }

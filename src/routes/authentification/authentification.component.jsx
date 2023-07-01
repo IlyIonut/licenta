@@ -5,17 +5,6 @@ import './authentification.styles.scss'
 
 const Authentification = () => {
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await getRedirectResult(auth);
-    //         if(response) {
-    //             const userDocRef = await createUserDocumentFromAuth(response.user);
-    //         }
-    //     }
-    //     fetchData();
-    // }, []); exemplu de sign in with redirect
-
-
     return (
         <div className="authentification-container">
             <SignInForm/>

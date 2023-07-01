@@ -64,9 +64,9 @@ const ProfileContext = ({ user }) => {
           <p>{mainOccupation}</p>
           
         </ProfileInfo>
-        
+        <p>{faculty}</p>
       </ProfileHeader>
-      <p>{faculty}</p>
+      
       <div className="profile-body">
         <ProfileSection>
           <ProfileSectionTitle>About</ProfileSectionTitle>
