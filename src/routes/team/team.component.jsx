@@ -3,7 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import UsersSidebar from "../../components/usersSidebar/usersSidebar.component";
 import { TeamName, UsersContainer } from "./team.styled";
-import Carousel from 'react-elastic-carousel';
+//import Carousel from 'react-elastic-carousel';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const Team = () => {
 
@@ -60,7 +62,12 @@ const Team = () => {
     
     const breakPoints = [
         {width:1200 , itemsToShow:4}
-    ]
+    ];
+    const swiperSettings = {
+        slidesPerView: 4,
+        spaceBetween: 350,
+        // Add more settings as needed
+      };
 
     return(
         <>
@@ -94,9 +101,13 @@ const Team = () => {
                     return <h3>SAT Team</h3>;
             }})()}
         </TeamName>
-        <Carousel breakPoints={breakPoints}>
-            {teamfiltered.map((user) => (<UsersSidebar key={users.id} user={user} />))}
-        </Carousel>
+        <Swiper {...swiperSettings}>
+      {teamfiltered.map((user) => (
+        <SwiperSlide key={user.id}>
+          <UsersSidebar user={user} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
         </>
     )
 }
