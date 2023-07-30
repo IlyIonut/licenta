@@ -17,7 +17,7 @@ import ParticlesBg from "particles-bg";
 const App = () => {
   return(
     <div className="content-center bg-black">
-    {/* <ParticlesBg type="lines" bg={true} /> */}
+    <ParticlesBg type="cobweb" bg={true} />
     <Routes>
       <Route path='/' element={<Navigation/>}>
         <Route index element={<Home/>}/>

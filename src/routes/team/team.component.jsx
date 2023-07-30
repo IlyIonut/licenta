@@ -2,10 +2,8 @@ import { UserContext } from "../../context/user.context";
 import { useContext, useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import UsersSidebar from "../../components/usersSidebar/usersSidebar.component";
-import { UsersContainer } from "./team.styled";
-// import { addCollectionAndDocuments } from "../../utils/firebase/firebase.utils";
-// import SHOP_DATA from "../shop-data.js";
-// import SAS_DATA from "../../sas-data";
+import { TeamName, UsersContainer } from "./team.styled";
+import Carousel from 'react-elastic-carousel';
 
 const Team = () => {
 
@@ -59,6 +57,10 @@ const Team = () => {
     }
 
     });
+    
+    const breakPoints = [
+        {width:1200 , itemsToShow:4}
+    ]
 
     return(
         <>
@@ -70,9 +72,31 @@ const Team = () => {
             </select>
 
         </div>
-        <UsersContainer>
+        <TeamName>
+            {(() => {switch(selectedOption){
+                case 'All Members':
+                    return <h3>SAS Team</h3>;
+                case 'Board':
+                    return <h3>Board Members</h3>;
+                case 'Mentors':
+                    return <h3>Mentors</h3>
+                case 'Media':
+                    return <h3>Media Team</h3>
+                case 'HR':
+                    return <h3>HR Team</h3>
+                case 'Events':
+                    return <h3>Events Team</h3>
+                case 'Mentoring':
+                    return <h3>Mentoring Team</h3>
+                case 'Volunteers':
+                    return <h3>Volunteers Team</h3>
+                default :
+                    return <h3>SAT Team</h3>;
+            }})()}
+        </TeamName>
+        <Carousel breakPoints={breakPoints}>
             {teamfiltered.map((user) => (<UsersSidebar key={users.id} user={user} />))}
-        </UsersContainer>
+        </Carousel>
         </>
     )
 }

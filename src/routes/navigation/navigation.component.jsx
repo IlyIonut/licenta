@@ -28,9 +28,6 @@ const Navigation = () =>{
                     <NavLink to='/events' >
                             <span>Events</span>
                     </NavLink>
-                    <NavLink to='/team' >
-                            <span>SAS Team & Mentors</span>
-                    </NavLink>
                     <NavLink to='/users' >
                             <span>Find your partner</span>
                     </NavLink>
