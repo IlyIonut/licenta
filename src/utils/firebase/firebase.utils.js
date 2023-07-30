@@ -51,18 +51,18 @@ const firebaseConfig = {
     console.log('done');
   } 
   
-  export const getCategoriesAndDocuments = async () => {
-    const collectionRef = collection(db,'categories');
+  export const getMembersAndDocuments = async () => {
+    const collectionRef = collection(db,'membri');
     const q = query(collectionRef);
   
     const querySnapshot = await getDocs(q);
-    const categoryMap = querySnapshot.docs.reduce((acc,docSnapshot) => {
+    const membersMap = querySnapshot.docs.reduce((acc,docSnapshot) => {
       const {title,items} = docSnapshot.data();
       acc[title.toLowerCase()] = items;
       return acc;
     }, {});
   
-    return categoryMap;
+    return membersMap;
   } 
   
   
@@ -99,6 +99,9 @@ const firebaseConfig = {
           jobs : additionalInformation.job || [],
           faculty: additionalInformation.faculty || null,
           languages : additionalInformation.languages || null,
+          department : additionalInformation.department || null,
+          role: additionalInformation.role || null,
+          sasMember: additionalInformation.sasMember || null,
           ...additionalInformation,
         });
       } catch (error) {
@@ -141,6 +144,9 @@ const firebaseConfig = {
     newJob,
     newFaculty,
     newLanguage,
+    newDepartment,
+    newRole,
+    newSasMember,
   ) => {
     const userDocRef = doc(db, 'users', userId.uid);
     const userData = (await getDoc(userDocRef)).data();
@@ -148,6 +154,7 @@ const firebaseConfig = {
     // Create an object to store the updated profile data
     const updatedProfileData = {};
   
+    console.log(newSasMember);
     // Compare and add changed data to updatedProfileData
     if (newLocation && (newLocation !== userData.location)) {
       updatedProfileData.location = newLocation;
@@ -181,6 +188,15 @@ const firebaseConfig = {
     }
     if (newLanguage && newLanguage !== userData.languages) {
       updatedProfileData.languages = newLanguage;
+    }
+    if (newDepartment && newDepartment !== userData.department) {
+      updatedProfileData.department = newDepartment;
+    }
+    if (newRole && newRole !== userData.role) {
+      updatedProfileData.role = newRole;
+    }
+    if (newSasMember && newSasMember !== userData.sasMember) {
+      updatedProfileData.sasMember = newSasMember;
     }
   
     if (Array.isArray(newSkill) && newSkill.length > 0) {

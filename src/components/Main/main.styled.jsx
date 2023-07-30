@@ -11,9 +11,9 @@ export const Row = styled.div`
 `
 
 export const Col = styled.div`
-    flex-basis:50%;
+    flex-basis:80%;
     h1{
-        font-size:100px;
+        font-size:60px;
         font-weight:bold;
         color: black;
         -webkit-text-fill-color: white; /* Will override color (regardless of order) */

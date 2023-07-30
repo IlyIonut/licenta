@@ -29,15 +29,15 @@ const Main = () =>  {
     return (
       <Row>
           <Col>
-            <h1>SkillConnect</h1>
+            <h1>Societatea Antreprenorială Studențească din cadrul UTCN</h1>
             <p>Create connections with new people depending on the skills you are looking for. Find partners, mentors or why not even new friends!</p>
             <Button onClick={()=>{navigate('/users')}} type="button" >Explore</Button>
           </Col>
           <Container>
             
-            {users.slice(0, 2).map((user) => (
+            {/* {users.slice(0, 2).map((user) => (
               <UsersSidebar key={user.id} user={user} />
-            ))}
+            ))} */}
             
           </Container>
       </Row>

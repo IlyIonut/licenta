@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { UserContext } from "../../context/user.context";
 import { useContext} from "react";
-import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
+import { ReactComponent as UTCN } from "../../assets/UTCN.svg";
+import { ReactComponent as LogoSas } from "../../assets/logoSas.svg"
 import {NavTotal,  NavLink , NavLinksContainer , LogoContainer} from "./navigation.styles";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
@@ -13,20 +14,31 @@ const Navigation = () =>{
 
     return(
         <NavTotal>
+            
             <div className='flex items-center justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
                 <LogoContainer to='/'>
-                   <CrwnLogo className="logo" />
+                   <LogoSas className='w-24 h-12'  />
+                   <UTCN className='w-24 h-12 mx-2'  />
                 </LogoContainer>
                 
                 <NavLinksContainer>
+                    <NavLink to='/about' >
+                            <span>About SAS</span>
+                    </NavLink>
+                    <NavLink to='/events' >
+                            <span>Events</span>
+                    </NavLink>
+                    <NavLink to='/team' >
+                            <span>SAS Team & Mentors</span>
+                    </NavLink>
                     <NavLink to='/users' >
-                            Users
+                            <span>Find your partner</span>
                     </NavLink>
                     {/* <NavLink to='/shop' >
                             SHOP
                     </NavLink> */}
                     <NavLink to='/myprofil' >
-                        Profile
+                        <span>Profile</span>
                     </NavLink>
                     {
                         currentUser ? (

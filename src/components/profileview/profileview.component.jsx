@@ -8,26 +8,12 @@ import { useContext , useEffect} from 'react';
 import { updateUserBirthDate, updateMainOcupation , updateDisplayName, updateProfile} from '../../utils/firebase/firebase.utils';
 import { UploadImage } from '../../utils/firebase/firebase.utils';
 import { getUserData } from '../../utils/firebase/firebase.utils';
+import Popup from 'reactjs-popup';
 
 
 const Profileview = () => {
   const { currentUser } = useContext(UserContext);
 
- 
-
-  const jobOptions = [
-    'Software Developer',
-    'Data Analyst',
-    'UX Designer',
-    'Network Administrator',
-    'Cybersecurity Analyst',
-    'IT Project Manager',
-    'Electronics Engineer',
-    'Architect',
-    'Automation Engineer',
-    'Embedded Systems Engineer',
-    'Other',
-  ];
   
   const [profileData, setProfileData] = useState({
     profileImage: currentUser.profileImage,
@@ -45,6 +31,9 @@ const Profileview = () => {
     jobs: currentUser?.jobs || [],
     faculty: currentUser.faculty,
     languages:currentUser.languages,
+    department:currentUser.department,
+    role:currentUser.role,
+    sasMember:currentUser.sasMember,
   });
 
   const [newdate, setDate] = useState(currentUser.date || '');
@@ -62,6 +51,11 @@ const Profileview = () => {
   const [newJob, setNewJob] = useState(profileData.jobs || []);
   const [newFaculty, setNewFaculty] = useState(currentUser.faculty || '');
   const [newLanguage, setNewLanguage] = useState(currentUser.languages || '');
+  const [newDepartment,setNewDepartment] = useState(currentUser.department || '');
+  const [newRole, setNewRole] = useState(currentUser.role || '');
+  const [newSasMember, setNewSasMember] = useState(currentUser.sasMember|| '');
+  const [newCode,setNewCode] = useState('');
+  const [validation, setValidation] = useState(false);
   const newBirthDate = newdate;
   
   useEffect(() => {
@@ -95,6 +89,9 @@ const Profileview = () => {
         newJob,
         newFaculty,
         newLanguage,
+        newDepartment,
+        newRole,
+        newSasMember,
       );
       await UploadResume(newresume, currentUser);
       alert('Profile Saved');
@@ -155,6 +152,23 @@ const Profileview = () => {
     updatedJobs.splice(index, 1);
     setNewJob(updatedJobs);
   };
+
+
+  const departmentOption = [
+    {label: 'Department', option: 'Department'},
+    {label:'Media', value:'Media'},
+    {label:'HR', value: 'HR'},
+    {label:'Events', value: 'Events'},
+    {label:'Mentoring', value: 'Mentoring'}
+  ];
+
+  const roleOption = [
+    {label: 'All', option: 'All'},
+    {label:'Volunteers', value:'Volunteers'},
+    {label:'Board', value: 'Board'},
+    {label:'Mentors', value: 'Mentors'}
+  ]
+
 
 
   
@@ -262,6 +276,67 @@ const Profileview = () => {
           onChange={(e) => setLocation(e.target.value)}
           placeholder="Edit your Location"
         />
+      </div>
+      <div className="p-5">
+        <label className="block mb-2 text-lg font-bold">Are you a SAS member?</label>
+        <Popup trigger={<button className="ml-2 text-green-500">Yes</button>} position={'right center'} >
+        <div className='flex flex-wrap w-3/4 overflow-hidden bg-white dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+          <div className='flex items-center justify-between'>
+            <div className='flex flex-wrap justify-start p-2'>
+            <label className="block px-3 mb-2 text-lg font-bold">Insert SAS Code:</label>
+            <input
+              type="text"
+              value={newCode}
+              onChange={(e) => setNewCode(e.target.value)}
+              placeholder="Insert SAS Code"
+              className='px-3 mb-2'
+            />
+            </div>
+            <div className="mr-7">
+            <button
+              onClick={() =>{if(newCode === 'SASUTCN'){
+                setValidation(true);
+                setNewSasMember(true);
+              }else{
+                alert('Code Invalid');
+              }}}
+              className="px-3 py-1 ml-1 text-white bg-green-500 rounded-md"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+        {validation && (
+          <div className='flex items-center justify-center my-2 flex-column' >
+              <div className='p-5 input-group-btn search-panel'>
+                  <select option={departmentOption} onChange={(e)=>setNewDepartment(e.target.value)}>
+                      {departmentOption.map((option) => (
+                        <option value={option.option}>{option.label}</option>
+                      ))}
+                  </select>
+              </div>
+              <div className='input-group-btn search-panel'>
+              <select option={roleOption} onChange={(e)=>setNewRole(e.target.value)}>
+                  {roleOption.map((option) => (
+                    <option value={option.option}>{option.label}</option>
+                  ))}
+              </select>
+                
+              </div>
+              <div className="p-5">
+                <button
+                  onClick={handleProfileUpdate}
+                  className="px-3 py-1 ml-2 text-white bg-green-500 rounded-md"
+                >
+                  Save SAS Membership
+                </button>
+                </div>
+          </div>
+        ) }
+      </div>
+        </Popup>
+        <button onClick={() => setNewSasMember(false)} className="ml-2 text-red-500">No</button>
+        <button className="ml-2 text-gray-500">No, but how I can become?</button>
       </div>
 
       

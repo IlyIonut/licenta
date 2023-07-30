@@ -8,16 +8,22 @@ import Checkout from "./routes/checkout/checkout.component";
 import Profil from "./routes/profil/profil.component";
 import UserSidebarPage from "./routes/users/users.component";
 import UserProfil from "./routes/userprofil/userprofil.component";
+import AboutSas from "./routes/aboutSAS/aboutSas.component";
+import Events from "./routes/events/events.component";
+import Team from "./routes/team/team.component";
 import "./App.css"
 import ParticlesBg from "particles-bg";
 
 const App = () => {
   return(
-    <div className="content-center">
-    <ParticlesBg type="cobweb" bg={true} />
+    <div className="content-center bg-black">
+    {/* <ParticlesBg type="lines" bg={true} /> */}
     <Routes>
       <Route path='/' element={<Navigation/>}>
         <Route index element={<Home/>}/>
+        <Route path='about/' element={<AboutSas/>} />
+        <Route path='events/' element={<Events/>} />
+        <Route path='team/' element={<Team/>} />
         <Route path='users/*' element={<UserSidebarPage/>} />
         <Route path="users/profil/:displayName" element={<UserProfil  />} />
         <Route path='shop/*' element={<Shop/>} />
