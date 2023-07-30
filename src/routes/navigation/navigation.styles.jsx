@@ -8,6 +8,7 @@ export const NavTotal = styled.div`
       -webkit-box-pack: center;
       justify-content: center;
       flex-wrap: wrap;
+      flex-direction:column;
       align-content: center;
       
 `

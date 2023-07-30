@@ -6,7 +6,7 @@ import { AboutContainer } from "./aboutSAS.styled";
 const AboutSas = () => {
     return(
         <>
-        <AboutContainer className='flex flex-col items-center justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+        <AboutContainer className='flex items-center justify-between w-5/6 overflow-hidden bg-white dark:bg-dark-500 lg: rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
             <div>
                 <h3>Cine sintem și ce facem?</h3>
                 <p>Idei sunt multe, dar puține ajung să se materializeze. Fie frica sau necunoştință de cauză, cert e că nu mai vrem să lăsăm visurile să moară. Aşa am apărut noi, să te ajutăm pe tine să îți pui ideea în practică şi, împreună, să schimbăm lumea. Suntem “echipați” cu mentori, voluntari, training-uri şi discuții care să te ajute să scoți antreprenorul din tine! Așadar, ce este SAS UTCN?</p>
