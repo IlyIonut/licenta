@@ -1,6 +1,6 @@
 import Team from "../team/team.component";
 import { AboutContainer } from "./aboutSAS.styled";
-
+import Events from "../events/events.component";
 
 
 const AboutSas = () => {
@@ -16,6 +16,8 @@ const AboutSas = () => {
             </div>
         </AboutContainer>
         <Team/>
+        <h3 className="p-5 text-4xl font-bold">Events</h3>
+        <Events/>
         </>
     )
 }

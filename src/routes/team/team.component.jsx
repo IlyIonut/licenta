@@ -103,8 +103,8 @@ const Team = () => {
         </TeamName>
         <Swiper {...swiperSettings}>
       {teamfiltered.map((user) => (
-        <SwiperSlide key={user.id}>
-          <UsersSidebar user={user} />
+        <SwiperSlide key={user.uid}>
+          <UsersSidebar key={user.uid} user={user} />
         </SwiperSlide>
       ))}
     </Swiper>

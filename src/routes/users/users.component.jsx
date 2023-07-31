@@ -109,7 +109,7 @@ const UserSidebarPage = () => {
       </SearchBox>
       <UsersContainer>
         {filteredUsers.map((user) => (
-          <UsersSidebar key={user.id} user={user} />
+          <UsersSidebar key={user.uid} user={user} />
         ))}
       </UsersContainer>
     </UsersPageContainer>
