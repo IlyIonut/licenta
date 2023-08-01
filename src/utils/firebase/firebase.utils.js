@@ -10,7 +10,7 @@ import {
   onAuthStateChanged,
 
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc,where  } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, addDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc,where, QuerySnapshot  } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
 
@@ -51,19 +51,29 @@ const firebaseConfig = {
     console.log('done');
   } 
   
-  export const getMembersAndDocuments = async () => {
-    const collectionRef = collection(db,'membri');
-    const q = query(collectionRef);
+  export const getDocuments = async () => {
+    const collectionRef = collection(db, "SAS_Events");
+    const querySnapshot = await getDocs(collectionRef);
   
-    const querySnapshot = await getDocs(q);
-    const membersMap = querySnapshot.docs.reduce((acc,docSnapshot) => {
-      const {title,items} = docSnapshot.data();
-      acc[title.toLowerCase()] = items;
+    if (!querySnapshot || !querySnapshot.docs) {
+      console.error("No documents found in the collection.");
+      return {};
+    }
+  
+    const eventsMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+      const { eventName, description, startDate, image } = docSnapshot.data();
+      const event = {
+        eventName,
+        description,
+        startDate,
+        image,
+      };
+      acc[docSnapshot.id] = event;
       return acc;
     }, {});
   
-    return membersMap;
-  } 
+    return eventsMap;
+  };
   
   
   export const createUserDocumentFromAuth = async (
@@ -128,6 +138,26 @@ const firebaseConfig = {
     }
   };
 
+  export const createEventDoc = async(eventData) =>{
+  const collectionRef = collection(db, "SAS_Events");
+  await addDoc(collectionRef, eventData);
+  }
+
+  export const uploadEventImage = async(image) => {
+  
+  if (image) {
+    try {
+      const storageRef = getStorage();
+      const storageChildRef = ref(storageRef, `events/${image.name}`);
+
+      await uploadBytes(storageChildRef, image);
+      const downloadURL = await getDownloadURL(storageChildRef);
+      return downloadURL;
+    } catch (error) {
+      console.log('Error uploading image:', error.message);
+    }
+  }
+  }
   
   export const updateProfile = async (
     userId,
@@ -217,6 +247,7 @@ const firebaseConfig = {
     }
   };
 
+ 
   const getImageNameFromURL = (file) => {
     const fileName = file.substring(
       file.lastIndexOf('/') + 1,
@@ -254,6 +285,7 @@ const firebaseConfig = {
       };
     }
   }
+
 
   const getFileNameFromURL = (url) => {
     const startIndex = url.indexOf('resumes%2F') + 'resumes%2F'.length;

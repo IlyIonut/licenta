@@ -25,7 +25,7 @@ const Team = () => {
 
     useEffect(()=>{
         const getUsers = async() => {
-            //addCollectionAndDocuments('SAS_Membri',SAS_DATA);
+            
             try{
                 const userData = await fetchUsers();
                 setUsers(userData);
