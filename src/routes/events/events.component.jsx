@@ -137,10 +137,10 @@ const Events = () => {
       )}
         
         {Object.values(eventsMap).map((event) => (
-          <div key={event.id} className='flex items-center justify-between w-5/6 my-5 overflow-hidden bg-white dark:bg-dark-500 lg:rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+          <div key={event.id} className='flex items-center justify-between w-5/6 my-5 overflow-hidden bg-white h-fit dark:bg-dark-500 lg:rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
             <Image className="" src={event.image} alt='event' />
             <Line className="" />
-            <Container className="flex flex-col p-5 h-72">
+            <Container className="flex flex-col px-5 py-1 h-72">
               <h3>{event.eventName}</h3>
               <p>{event.description}</p>
             </Container>

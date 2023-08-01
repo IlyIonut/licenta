@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button, Card, Container } from "./main.styled";
+import { Row, Col, Button, Card, Container, Title } from "./main.styled";
 import UsersSidebar from "../usersSidebar/usersSidebar.component";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import { useState,useEffect } from "react";
@@ -27,20 +27,21 @@ const Main = () =>  {
       const navigate = useNavigate();
 
     return (
-      <Row>
-          <Col>
-            <h1>Societatea Antreprenorială Studențească din cadrul UTCN</h1>
-            <p>Create connections with new people depending on the skills you are looking for. Find partners, mentors or why not even new friends!</p>
+      <Container>
+        
+          <Title className=''>
+              <h2>SAS</h2><h2>SAS</h2>
+              
+            </Title>
+        
+        <Col>
+            <h3>Societatea Antreprenorială Studențească</h3>
+            {/* <h1>Societatea Antreprenorială Studențească din cadrul UTCN</h1> */}
+            {/* <p>Create connections with new people depending on the skills you are looking for. Find partners, mentors or why not even new friends!</p> */}
             <Button onClick={()=>{navigate('/users')}} type="button" >Explore</Button>
           </Col>
-          <Container>
-            
-            {/* {users.slice(0, 2).map((user) => (
-              <UsersSidebar key={user.id} user={user} />
-            ))} */}
-            
-          </Container>
-      </Row>
+        
+      </Container>
 
     );
 }
