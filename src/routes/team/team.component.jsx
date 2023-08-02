@@ -2,7 +2,7 @@ import { UserContext } from "../../context/user.context";
 import { useContext, useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import UsersSidebar from "../../components/usersSidebar/usersSidebar.component";
-import { TeamName, UsersContainer } from "./team.styled";
+import { OptionMenu, SelectMenu, TeamName, UsersContainer } from "./team.styled";
 //import Carousel from 'react-elastic-carousel';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -72,11 +72,11 @@ const Team = () => {
     return(
         <>
         <div className="p-5 mt-5 input-group-btn search-panel">
-            <select option={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+            <SelectMenu option={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
                 {options.map((option) => (
-                    <option value={option.option}>{option.label}</option>
+                    <OptionMenu value={option.option}>{option.label}</OptionMenu>
                 ))}
-            </select>
+            </SelectMenu>
 
         </div>
         <TeamName>

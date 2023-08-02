@@ -29,7 +29,7 @@ const Navigation = () =>{
                             <span>Events</span>
                     </NavLink>
                     <NavLink to='/users' >
-                            <span>Find your partner</span>
+                            <span>Skills Connect</span>
                     </NavLink>
                     <NavLink to='/contactus' >
                             Contact Us

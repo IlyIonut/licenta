@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UsersSidebar from '../../components/usersSidebar/usersSidebar.component';
 import { fetchUsers } from '../../utils/firebase/firebase.utils';
-import { UsersContainer, UsersPageContainer } from './users.styled';
+import { OptionMenu, SelectMenu, UsersContainer, UsersPageContainer } from './users.styled';
 import { SearchBox,InputGroup,Input} from './users.styled';
 
 const UserSidebarPage = () => {
@@ -81,15 +81,15 @@ const UserSidebarPage = () => {
             <InputGroup>
               <div className="input-group-btn search-panel">
 
-                <select option={selectedOption} onChange={handleChange}>
+                <SelectMenu option={selectedOption} onChange={handleChange}>
 
                   {options.map((option) => (
 
-                  <option value={option.option}>{option.label}</option>
+                  <OptionMenu value={option.option}>{option.label}</OptionMenu>
 
                   ))}
 
-                </select>
+                </SelectMenu>
       
               </div>
               <Input
