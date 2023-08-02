@@ -11,6 +11,7 @@ import UserProfil from "./routes/userprofil/userprofil.component";
 import AboutSas from "./routes/aboutSAS/aboutSas.component";
 import Events from "./routes/events/events.component";
 import Team from "./routes/team/team.component";
+import ContactUs from "./routes/contactUs/contactUs.component";
 import "./App.css"
 import ParticlesBg from "particles-bg";
 
@@ -26,7 +27,7 @@ const App = () => {
         <Route path='team/' element={<Team/>} />
         <Route path='users/*' element={<UserSidebarPage/>} />
         <Route path="users/profil/:displayName" element={<UserProfil  />} />
-        <Route path='shop/*' element={<Shop/>} />
+        <Route path='contactus/*' element={<ContactUs/>} />
         <Route path='auth' element={<Authentification/>} />
         <Route path='checkout' element={<Checkout/>} />
         <Route path='myprofil' element={<Profil/>} />

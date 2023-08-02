@@ -31,9 +31,9 @@ const Navigation = () =>{
                     <NavLink to='/users' >
                             <span>Find your partner</span>
                     </NavLink>
-                    {/* <NavLink to='/shop' >
-                            SHOP
-                    </NavLink> */}
+                    <NavLink to='/contactus' >
+                            Contact Us
+                    </NavLink>
                     <NavLink to='/myprofil' >
                         <span>Profile</span>
                     </NavLink>
