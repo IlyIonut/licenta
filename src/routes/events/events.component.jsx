@@ -8,6 +8,7 @@ import Popup from "reactjs-popup";
 import { createEventDoc, uploadEventImage } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../context/user.context";
 import { getUserData } from "../../utils/firebase/firebase.utils";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -19,7 +20,8 @@ const Events = () => {
     const [newImage,setNewImage] = useState(eventsMap.eventImage || '');
     const [newDate,setNewDate] = useState(eventsMap.startDate || '');
     const {currentUser} = useContext(UserContext);
-    const [profileData, setProfileData] = useState({role:currentUser.role})
+    const [profileData, setProfileData] = useState("")
+    const location = useLocation();
   
     useEffect(() => {
       // Check if events data is available before rendering
@@ -65,6 +67,11 @@ const Events = () => {
           }
     }
   
+    if (!currentUser || !profileData) {
+      // Return loading indicator or placeholder content
+      return <div>Loading...</div>;
+    }
+    
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -72,7 +79,7 @@ const Events = () => {
     console.log(currentUser);
     return (
       <>
-      {profileData.role === "Board" && (
+      {location.pathname !== '/about'&& profileData?.role === "Board" && (
         <Popup trigger={
             <div className="p-5">
             <button
