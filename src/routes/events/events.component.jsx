@@ -66,17 +66,12 @@ const Events = () => {
             alert("Error adding event document: " + error.message);
           }
     }
-  
-    if (!currentUser || !profileData) {
-      // Return loading indicator or placeholder content
-      return <div>Loading...</div>;
-    }
     
     if (loading) {
       return <div>Loading...</div>;
     }
   
-    console.log(currentUser);
+
     return (
       <>
       {location.pathname !== '/about'&& profileData?.role === "Board" && (

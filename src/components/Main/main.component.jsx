@@ -4,6 +4,7 @@ import UsersSidebar from "../usersSidebar/usersSidebar.component";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {ReactComponent as SAS} from "../../assets/LOGO SAS SITE.svg"
 
 const Main = () =>  {
 
@@ -27,13 +28,15 @@ const Main = () =>  {
       const navigate = useNavigate();
 
     return (
-      <Container>
+      <Container className="w-4/5">
         
-          <Title className=''>
-              <h2>SAS</h2><h2>SAS</h2>
+          {/* <Title className=''>
+              <h2><span className="text-fuchsia-950">S</span><span className="text-yellow-500" >A</span><span className="text-orange-500">S</span></h2>
+              <h2><span className="text-fuchsia-950">S</span><span className="text-yellow-500" >A</span><span className="text-orange-500">S</span></h2>
               
-            </Title>
-        
+               
+            </Title> */}
+            <SAS className="w-11/12 h-auto"/>
         <Col>
             <h3>Societatea Antreprenorială Studențească</h3>
             {/* <h1>Societatea Antreprenorială Studențească din cadrul UTCN</h1> */}

@@ -8,12 +8,13 @@ import { useContext , useEffect} from 'react';
 import { updateUserBirthDate, updateMainOcupation , updateDisplayName, updateProfile} from '../../utils/firebase/firebase.utils';
 import { UploadImage } from '../../utils/firebase/firebase.utils';
 import { getUserData } from '../../utils/firebase/firebase.utils';
+import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 
 
 const Profileview = () => {
   const { currentUser } = useContext(UserContext);
-
+  const navigate = useNavigate();
   
   const [profileData, setProfileData] = useState({
     profileImage: currentUser.profileImage,
@@ -335,8 +336,7 @@ const Profileview = () => {
         ) }
       </div>
         </Popup>
-        <button onClick={() => setNewSasMember(false)} className="ml-2 text-red-500">No</button>
-        <button className="ml-2 text-gray-500">No, but how I can become?</button>
+        <button onClick={()=>{navigate('/contactus')}} className="ml-2 text-gray-500">No, but how I can become?</button>
       </div>
 
       

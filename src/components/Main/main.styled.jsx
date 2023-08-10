@@ -7,8 +7,7 @@ display: flex;
 justify-content: flex-end;
 align-items: center;
 flex-flow: row;
-margin-left: 650px;
-margin-top:150px;
+margin-left:8rem;
 align-content: center;
 flex-wrap: nowrap;
 
