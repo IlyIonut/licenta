@@ -61,12 +61,14 @@ const firebaseConfig = {
     }
   
     const eventsMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-      const { eventName, description, startDate, image } = docSnapshot.data();
+      const { eventName, description, startDate, image, join, terms } = docSnapshot.data();
       const event = {
         eventName,
         description,
         startDate,
         image,
+        join,
+        terms
       };
       acc[docSnapshot.id] = event;
       return acc;
@@ -158,7 +160,22 @@ const firebaseConfig = {
     }
   }
   }
+  export const uploadEventTerms = async(terms) => {
   
+    if (terms) {
+      try {
+        const storageRef = getStorage();
+        const storageChildRef = ref(storageRef, `events/${terms.name}`);
+  
+        await uploadBytes(storageChildRef, terms);
+        const downloadURL = await getDownloadURL(storageChildRef);
+        return downloadURL;
+      } catch (error) {
+        console.log('Error uploading terms:', error.message);
+      }
+    }
+    }
+
   export const updateProfile = async (
     userId,
     newPhoneNumber,
