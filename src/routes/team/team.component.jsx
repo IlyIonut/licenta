@@ -102,25 +102,19 @@ const Team = () => {
             }})()}
         </TeamName>
         <Swiper className="w-11/12 h-auto"
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={10} // Adjust this value as needed
-      slidesPerView={4} // Show 3 items per slide
-      navigation
-      pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
-    >
-      {teamfiltered.map((user) => (
-        <SwiperSlide className="my-7" key={user.uid}>
-          <UsersSidebar user={user} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-        {/* <Swiper slides-per-view="5" speed="500" loop="true" css-mode="true" {...swiperSettings}>
-      
-    
-    </Swiper> */}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={40} 
+            slidesPerView={4} 
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+        >
+        {teamfiltered.map((user) => (
+            <SwiperSlide className="my-7" key={user.uid}>
+            <UsersSidebar user={user} />
+            </SwiperSlide>
+        ))}
+        </Swiper>
         </>
     )
 }

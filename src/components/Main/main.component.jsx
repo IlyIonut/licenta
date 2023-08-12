@@ -30,18 +30,10 @@ const Main = () =>  {
     return (
       <Container className="w-4/5">
         
-          {/* <Title className=''>
-              <h2><span className="text-fuchsia-950">S</span><span className="text-yellow-500" >A</span><span className="text-orange-500">S</span></h2>
-              <h2><span className="text-fuchsia-950">S</span><span className="text-yellow-500" >A</span><span className="text-orange-500">S</span></h2>
-              
-               
-            </Title> */}
             <SAS className="w-11/12 h-auto"/>
         <Col>
             <h3>Societatea Antreprenorială Studențească</h3>
-            {/* <h1>Societatea Antreprenorială Studențească din cadrul UTCN</h1> */}
-            {/* <p>Create connections with new people depending on the skills you are looking for. Find partners, mentors or why not even new friends!</p> */}
-            <Button onClick={()=>{navigate('/users')}} type="button" >Explore</Button>
+             <Button onClick={()=>{navigate('/about')}} type="button" >Explore</Button>
           </Col>
         
       </Container>
