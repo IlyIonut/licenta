@@ -15,7 +15,7 @@ export const EventsProvider = ({ children }) => {
     useEffect(() => {
       const fetchEvents = async () => {
         const eventsData = await getDocuments();
-        console.log(eventsData);
+        // console.log(eventsData);
         setEventsMap(eventsData);
       };
   

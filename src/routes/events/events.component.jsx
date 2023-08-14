@@ -5,7 +5,7 @@ import { EventsContext } from "../../context/events.context";
 import { useEffect, useState, useContext } from "react";
 
 import Popup from "reactjs-popup";
-import { createEventDoc, uploadEventImage, uploadEventTerms } from "../../utils/firebase/firebase.utils";
+import { createEventDoc, uploadEventImage, uploadEventTerms, deleteEventDoc } from "../../utils/firebase/firebase.utils";
 import { UserContext } from "../../context/user.context";
 import { getUserData } from "../../utils/firebase/firebase.utils";
 import { Link, useLocation } from "react-router-dom";
@@ -30,6 +30,7 @@ const Events = () => {
       if (eventsMap && Object.keys(eventsMap).length > 0) {
         setLoading(false);
       }
+      console.log(eventsMap)
       const getUserProfile = async () => {
         try {
           const fetchedProfileData = await getUserData(currentUser);
@@ -77,6 +78,11 @@ const Events = () => {
       return <div>Loading...</div>;
     }
   
+    const handleDeleteEvent = async (eventId, imageDownloadURL, termsDownloadURL) => {
+      console.log(eventId, imageDownloadURL, termsDownloadURL);
+      await deleteEventDoc(eventId, imageDownloadURL, termsDownloadURL);
+      window.location.reload();
+  };
 
     return (
       <>
@@ -163,8 +169,14 @@ const Events = () => {
         </Popup>
       )}
         
-        {Object.values(eventsMap).map((event) => (
-        <div key={event.id} className="flex flex-col items-center justify-between w-full my-5">
+        {Object.keys(eventsMap).map((eventId) => {
+        const event = eventsMap[eventId];
+        if (!event) {
+          // Skip rendering if event is undefined
+          return null;
+        }
+        return(
+        <div key={eventId} className="flex flex-col items-center justify-between w-full my-5">
           <div className='flex items-center justify-between w-5/6 my-5 overflow-hidden bg-white h-fit dark:bg-dark-500 lg:rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
             <Image className="" src={event.image} alt='event' />
             <Line className="" />
@@ -189,11 +201,19 @@ const Events = () => {
           rel="noreferrer">
             Terms&Conditions
           </a>
+        {location.pathname !== '/about'&& profileData?.role === "Board" && (
+          <button
+            onClick={() => handleDeleteEvent(eventId, event.image, event.terms)}
+            className="px-3 py-1 mx-5 text-white bg-red-500 rounded-md"
+        >
+            Delete Event
+        </button>)}
           </div>
           
          
           </div>
-        ))}
+        );
+      })}
       </>
     );
   };

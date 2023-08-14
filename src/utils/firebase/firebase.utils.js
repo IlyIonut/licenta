@@ -10,8 +10,8 @@ import {
   onAuthStateChanged,
 
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, addDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc,where, QuerySnapshot  } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { getFirestore, doc, getDoc, addDoc, setDoc, collection, writeBatch, query, getDocs, updateDoc,where, deleteDoc  } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject} from 'firebase/storage';
 
 
 const firebaseConfig = {
@@ -77,7 +77,31 @@ const firebaseConfig = {
     return eventsMap;
   };
   
-  
+  export const deleteEventDoc = async (eventId, imageURL, termsURL) => {
+    try {
+        // Delete the event document from Firestore
+        const docRef = doc(db, "SAS_Events", eventId);
+        // Delete the event document from Firestore
+        await deleteDoc(docRef);
+
+        // Delete the associated image from Firebase Storage
+        if (imageURL) {
+            const storageRef = getStorage();
+            const imageRef = ref(storageRef, imageURL);
+            await deleteObject(imageRef);
+        }
+
+        // Delete the associated terms file from Firebase Storage
+        if (termsURL !== '') {
+            const storageRef = getStorage();
+            const termsRef = ref(storageRef, termsURL);
+            await deleteObject(termsRef);
+        }
+    } catch (error) {
+        console.error("Error deleting event document: ", error);
+    }
+};
+
   export const createUserDocumentFromAuth = async (
     userAuth,
     additionalInformation = {}
