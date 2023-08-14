@@ -20,7 +20,7 @@ const Events = () => {
     const [newImage,setNewImage] = useState(eventsMap.eventImage || '');
     const [newDate,setNewDate] = useState(eventsMap.startDate || '');
     const [newJoin,setNewJoin] = useState(eventsMap.join || '');
-    const [newTerms, setNewTerms] = useState(null);
+    const [newTerms, setNewTerms] = useState('');
     const {currentUser} = useContext(UserContext);
     const [profileData, setProfileData] = useState("")
     const location = useLocation();
@@ -52,7 +52,7 @@ const Events = () => {
 
            
             const upImage = await uploadEventImage(newImage);
-            const upTerms = await uploadEventTerms(newTerms);
+            const upTerms = newTerms? await uploadEventTerms(newTerms) : '';
         
             const eventData = {
               eventName: newTitle,
@@ -64,7 +64,7 @@ const Events = () => {
             };
         
             await createEventDoc(eventData);
-
+            window.location.reload();
             
         
           } catch (error) {
