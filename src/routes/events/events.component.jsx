@@ -88,7 +88,7 @@ const Events = () => {
       <>
       {location.pathname !== '/about'&& profileData?.role === "Board" && (
         <Popup trigger={
-            <div className="p-5">
+            <div className="p-5 mt-7">
             <button
               className="px-3 py-1 ml-2 text-white bg-green-500 rounded-md"
             >
@@ -96,10 +96,10 @@ const Events = () => {
             </button>
             </div>
         } position={"right top"} >
-            <div className='flex flex-wrap h-auto overflow-hidden bg-white w-fit dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
-                <div className='flex flex-col justify-between'>
+            <div className='flex flex-wrap h-auto mx-3 my-3 overflow-hidden bg-white w-fit dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+                <div className='flex flex-col justify-between mx-3 my-3'>
                     <div className='flex p-2'>
-                        <label className="block px-3 mb-2 text-lg font-bold">Title:</label>
+                        <label className="block px-3 mb-2 text-lg font-bold">Title*:</label>
                         <input
                         type="text"
                         value={newTitle}
@@ -109,7 +109,7 @@ const Events = () => {
                         />
                     </div>
                     <div className='flex p-2'>
-                        <label className="block px-3 mb-2 text-lg font-bold">Description:</label>
+                        <label className="block px-3 mb-2 text-lg font-bold">Description*:</label>
                         <input
                         type="text"
                         value={newDescription}
@@ -119,7 +119,7 @@ const Events = () => {
                         />
                     </div>
                     <div className='flex p-2'>
-                        <label className="block px-3 mb-2 text-lg font-bold">Start Date:</label>
+                        <label className="block px-3 mb-2 text-lg font-bold">Start Date*:</label>
                         <input
                         type="text"
                         value={newDate}
@@ -129,7 +129,7 @@ const Events = () => {
                         />
                     </div>
                     <div className='flex p-2'>
-                        <label className="block px-3 mb-2 text-lg font-bold">Image:</label>
+                        <label className="block px-3 mb-2 text-lg font-bold">Image*:</label>
                         <input
                         type="file"
                         onChange={(e) => setNewImage(e.target.files[0])}
@@ -156,7 +156,7 @@ const Events = () => {
                         className='w-48 h-auto px-3 mb-2'
                         />
                     </div>
-                    <div className="px-2 py-5">
+                    <div className="px-2 py-3">
                         <button
                         onClick={addEvent}
                         className="px-3 py-1 ml-2 text-white bg-green-500 rounded-md"
