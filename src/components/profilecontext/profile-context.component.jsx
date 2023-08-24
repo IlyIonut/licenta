@@ -108,18 +108,20 @@ const ProfileContext = ({ user }) => {
           )}
           
         </ProfileSection>
-        <div className='flex items-center justify-center'>
-        
-        <Download
-        className=""
-        href={resume}
-        download={`${displayName}.pdf`}
-        target="_blank"
-        rel="noreferrer"
-        >
-        <p className="text-center">Download Resume</p>
-        </Download>
-        </div>      
+        {resume && (
+          <div className='flex items-center justify-center'>
+          
+          <Download
+          className=""
+          href={resume}
+          download={`${displayName}.pdf`}
+          target="_blank"
+          rel="noreferrer"
+          >
+          <p className="text-center">Download Resume</p>
+          </Download>
+        </div>
+        )}      
       </div>
     </ProfileContainer>
   );

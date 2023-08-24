@@ -52,6 +52,11 @@ const SignUpForm = () => {
       } else {
         console.log('user creation encountered an error', error);
       }
+      if (error.code === 'auth/weak-password') {
+        alert('Password should be at least 6 characters');
+      } else {
+        console.log('user creation encountered an error', error);
+      }
     }
   };
 

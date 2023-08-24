@@ -202,12 +202,18 @@ const Events = () => {
             Terms&Conditions
           </a>
         {location.pathname !== '/about'&& profileData?.role === "Board" && (
-          <button
-            onClick={() => handleDeleteEvent(eventId, event.image, event.terms)}
-            className="px-3 py-1 mx-5 text-white bg-red-500 rounded-md"
-        >
-            Delete Event
-        </button>)}
+          <Popup trigger={<button className="px-3 py-1 mx-5 text-white bg-red-500 rounded-md" >Delete Event</button>}>
+             <div className='flex flex-col h-auto mx-3 my-3 overflow-hidden bg-white w-fit dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+                <h2 className="my-3 mx-3 font-semibold">Are you sure you want to delete the event?</h2>
+                <button
+                onClick={() => handleDeleteEvent(eventId, event.image, event.terms)}
+                className="px-3 py-1 mx-5  my-5 text-white bg-red-500 rounded-md"
+                >
+                Delete Event
+                </button>
+            </div>
+        </Popup>
+        )}
           </div>
           
          

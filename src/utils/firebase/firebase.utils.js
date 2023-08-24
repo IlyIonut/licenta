@@ -108,6 +108,7 @@ const firebaseConfig = {
   ) => {
     if (!userAuth) return;
   
+    console.log("Cont creat cu succes");
     const userDocRef = doc(db, 'users', userAuth.uid);
   
     const userSnapshot = await getDoc(userDocRef);
@@ -115,7 +116,6 @@ const firebaseConfig = {
     if (!userSnapshot.exists()) {
       const { displayName, email } = userAuth;
       const createdAt = new Date();
-      console.log(userAuth);
       try {
         await setDoc(userDocRef, {
           displayName,
@@ -152,7 +152,6 @@ const firebaseConfig = {
 
     const userDocRef = doc(db, 'users', userId.uid);
     const q = query(userDocRef);
-  
     const docSnap = await getDoc(q);
     if (docSnap.exists()) {
       //console.log("Document data:", docSnap.data());

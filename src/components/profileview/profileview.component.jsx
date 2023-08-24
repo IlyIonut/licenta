@@ -15,8 +15,8 @@ import Popup from 'reactjs-popup';
 const Profileview = () => {
   const { currentUser } = useContext(UserContext);
   const navigate = useNavigate();
-  
-  const [profileData, setProfileData] = useState({
+
+  const initialProfileData = {
     profileImage: currentUser.profileImage,
     displayName: currentUser.displayName,
     email: currentUser.email,
@@ -31,12 +31,13 @@ const Profileview = () => {
     skills: currentUser?.skills || [],
     jobs: currentUser?.jobs || [],
     faculty: currentUser.faculty,
-    languages:currentUser.languages,
-    department:currentUser.department,
-    role:currentUser.role,
-    sasMember:currentUser.sasMember,
-  });
+    languages: currentUser.languages,
+    department: currentUser.department,
+    role: currentUser.role,
+    sasMember: currentUser.sasMember,
+  };
 
+  const [profileData, setProfileData] = useState(initialProfileData);
   const [newdate, setDate] = useState(currentUser.date || '');
   const [newselectedFile, setSelectedFile] = useState(currentUser.selectedFile || '');
   const [newmainOcupation, setMainOcupation] = useState(currentUser.mainOcupation || '');
@@ -52,24 +53,73 @@ const Profileview = () => {
   const [newJob, setNewJob] = useState(profileData.jobs || []);
   const [newFaculty, setNewFaculty] = useState(currentUser.faculty || '');
   const [newLanguage, setNewLanguage] = useState(currentUser.languages || '');
-  const [newDepartment,setNewDepartment] = useState(currentUser.department || '');
+  const [newDepartment, setNewDepartment] = useState(currentUser.department || '');
   const [newRole, setNewRole] = useState(currentUser.role || '');
-  const [newSasMember, setNewSasMember] = useState(currentUser.sasMember|| '');
-  const [newCode,setNewCode] = useState('');
+  const [newSasMember, setNewSasMember] = useState(currentUser.sasMember || '');
+  const [newCode, setNewCode] = useState('');
   const [validation, setValidation] = useState(false);
   const newBirthDate = newdate;
-  
+
   useEffect(() => {
-    const getUserProfile = async () => {
+    const fetchUserProfile = async () => {
       try {
         const fetchedProfileData = await getUserData(currentUser);
-        setProfileData(fetchedProfileData);
+        const {
+          displayName,
+          email,
+          faculty,
+          languages,
+          department,
+          role,
+          sasMember,
+          phoneNumber,
+          mainOcupation,
+          description,
+          selectedFile,
+          date,
+          gitHubLink,
+          linkedinLink,
+          instagramLink,
+          resume,
+          location,
+          skills,
+          jobs,
+        } = fetchedProfileData;
+
+        setProfileData({
+          ...fetchedProfileData,
+          skills: skills || [],
+          jobs: jobs || [],
+        });
+
+        setDate(date || '');
+        setSelectedFile(selectedFile || '');
+        setMainOcupation(mainOcupation || '');
+        setPhoneNumber(phoneNumber || '');
+        setDescription(description || '');
+        setGitHubLink(gitHubLink || '');
+        setLinkedinLink(linkedinLink || '');
+        setInstagramLink(instagramLink || '');
+        setNewDisplayName(displayName || '');
+        setResume(resume || '');
+        setLocation(location || '');
+        setNewSkillAndJobAndUpdateRest({
+          newSkill: skills || [],
+          newJob: jobs || [],
+        });
+        setNewFaculty(faculty || '');
+        setNewLanguage(languages || '');
+        setNewDepartment(department || '');
+        setNewRole(role || '');
+        setNewSasMember(sasMember || '');
+        setNewCode('');
+        setValidation(false);
       } catch (error) {
         console.log('Error retrieving user profile:', error);
       }
     };
 
-    getUserProfile();
+    fetchUserProfile();
   }, [currentUser]);
 
   const handleProfileUpdate = async () => {
@@ -101,6 +151,10 @@ const Profileview = () => {
     }
   };
 
+  const setNewSkillAndJobAndUpdateRest = ({ newSkill, newJob }) => {
+    setNewSkill(newSkill);
+    setNewJob(newJob);
+  };
   const handleProfileImageChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -109,23 +163,6 @@ const Profileview = () => {
     setNewSkill([...newSkill, '']);
   };
 
-  const {
-    profileImage,
-    displayName,
-    email,
-    mainOccupation,
-    description,
-    phoneNumber,
-    gitHubLink,
-    linkedinLink,
-    instagramLink,
-    resume,
-    location,
-    skills,
-    jobs,
-  } = profileData;
-
-  
   const handleSkillChange = (index, value) => {
     const updatedSkills = [...newSkill];
     updatedSkills[index] = value;
@@ -153,7 +190,6 @@ const Profileview = () => {
     updatedJobs.splice(index, 1);
     setNewJob(updatedJobs);
   };
-
 
   const departmentOption = [
     {label: 'Department', option: 'Department'},

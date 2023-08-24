@@ -103,14 +103,14 @@ const Team = () => {
         </TeamName>
         <Swiper className="w-11/12 h-auto"
             modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={10} 
+            spaceBetween={150} 
             slidesPerView={4} 
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
         >
         {teamfiltered.map((user) => (
-            <SwiperSlide className="mx-1 my-7" key={user.uid}>
+            <SwiperSlide className="my-7" key={user.uid}>
             <UsersSidebar user={user} />
             </SwiperSlide>
         ))}
