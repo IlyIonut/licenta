@@ -103,7 +103,7 @@ const Team = () => {
         </TeamName>
         <Swiper className="w-11/12 h-auto"
             modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={150} 
+            spaceBetween={10} 
             slidesPerView={4} 
             navigation
             pagination={{ clickable: true }}
