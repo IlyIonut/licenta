@@ -108,7 +108,7 @@ const firebaseConfig = {
   ) => {
     if (!userAuth) return;
   
-    console.log("Cont creat cu succes");
+  
     const userDocRef = doc(db, 'users', userAuth.uid);
   
     const userSnapshot = await getDoc(userDocRef);
@@ -221,11 +221,11 @@ const firebaseConfig = {
     const userDocRef = doc(db, 'users', userId.uid);
     const userData = (await getDoc(userDocRef)).data();
   
-    // Create an object to store the updated profile data
+   
     const updatedProfileData = {};
   
     console.log(newSasMember);
-    // Compare and add changed data to updatedProfileData
+
     if (newLocation && (newLocation !== userData.location)) {
       updatedProfileData.location = newLocation;
     }
