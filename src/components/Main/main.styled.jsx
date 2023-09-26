@@ -49,11 +49,11 @@ export const Col = styled.div`
     }
     @media only screen and (max-width: 600px) {
       h3{
-        font-size:20px;
+        font-size:18px;
         margin-top:-80px;
       }
       h4{
-        font-size:16px;
+        font-size:14px;
       }
     }
 `
