@@ -122,22 +122,14 @@ const firebaseConfig = {
           email,
           createdAt,
           phoneNumber: additionalInformation.phoneNumber || '',
-          birthDate: additionalInformation.birthDate || null,
           mainOccupation: additionalInformation.mainOcupation || 'Your occupation',
-          skills: additionalInformation.skill || [],
-          description: additionalInformation.description || '',
           profileImage: additionalInformation.profileImage || null,
           gitHubLink: additionalInformation.gitHubLink || null,
           linkedinLink : additionalInformation.linkedinLink || null,
           instagramLink : additionalInformation.instagramLink || null,
-          resume : additionalInformation.resume || null,
-          location : additionalInformation.location || null,
-          jobs : additionalInformation.job || [],
           faculty: additionalInformation.faculty || null,
-          languages : additionalInformation.languages || null,
           department : additionalInformation.department || null,
           role: additionalInformation.role || null,
-          sasMember: additionalInformation.sasMember || null,
           ...additionalInformation,
         });
       } catch (error) {
@@ -202,21 +194,14 @@ const firebaseConfig = {
   export const updateProfile = async (
     userId,
     newPhoneNumber,
-    newBirthDate,
     newDisplayName,
     newMainOccupation,
-    newDescription,
     newGitHubLink,
     newLinkedinLink,
     newInstagramLink,
-    newLocation,
-    newSkill,
-    newJob,
     newFaculty,
-    newLanguage,
     newDepartment,
     newRole,
-    newSasMember,
   ) => {
     const userDocRef = doc(db, 'users', userId.uid);
     const userData = (await getDoc(userDocRef)).data();
@@ -224,26 +209,18 @@ const firebaseConfig = {
    
     const updatedProfileData = {};
   
-    console.log(newSasMember);
-
-    if (newLocation && (newLocation !== userData.location)) {
-      updatedProfileData.location = newLocation;
-    }
+    
     if (newPhoneNumber && newPhoneNumber !== userData.phoneNumber) {
       updatedProfileData.phoneNumber = newPhoneNumber;
     }
-    if (newBirthDate && newBirthDate !== userData.birthDate) {
-      updatedProfileData.birthDate = newBirthDate;
-    }
+    
     if (newDisplayName && newDisplayName !== userData.displayName) {
       updatedProfileData.displayName = newDisplayName;
     }
     if (newMainOccupation && newMainOccupation !== userData.mainOccupation) {
       updatedProfileData.mainOccupation = newMainOccupation;
     }
-    if (newDescription && newDescription !== userData.description) {
-      updatedProfileData.description = newDescription;
-    }
+    
     if (newGitHubLink && newGitHubLink !== userData.gitHubLink) {
       updatedProfileData.gitHubLink = newGitHubLink;
     }
@@ -256,25 +233,14 @@ const firebaseConfig = {
     if (newFaculty && newFaculty !== userData.faculty) {
       updatedProfileData.faculty = newFaculty;
     }
-    if (newLanguage && newLanguage !== userData.languages) {
-      updatedProfileData.languages = newLanguage;
-    }
+    
     if (newDepartment && newDepartment !== userData.department) {
       updatedProfileData.department = newDepartment;
     }
     if (newRole && newRole !== userData.role) {
       updatedProfileData.role = newRole;
     }
-    if (newSasMember && newSasMember !== userData.sasMember) {
-      updatedProfileData.sasMember = newSasMember;
-    }
-  
-    if (Array.isArray(newSkill) && newSkill.length > 0) {
-      updatedProfileData.skills = newSkill;
-    }
-    if (Array.isArray(newJob) && newJob.length > 0) {
-      updatedProfileData.jobs = newJob;
-    }
+    
   
     // Only update the profile if there are changes
     if (Object.keys(updatedProfileData).length > 0) {

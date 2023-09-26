@@ -66,54 +66,36 @@ const Profileview = () => {
         const fetchedProfileData = await getUserData(currentUser);
         const {
           displayName,
-          email,
           faculty,
-          languages,
           department,
           role,
-          sasMember,
           phoneNumber,
           mainOcupation,
-          description,
           selectedFile,
-          date,
           gitHubLink,
           linkedinLink,
           instagramLink,
-          resume,
-          location,
-          skills,
-          jobs,
         } = fetchedProfileData;
 
         setProfileData({
           ...fetchedProfileData,
-          skills: skills || [],
-          jobs: jobs || [],
         });
 
-        setDate(date || '');
+       
         setSelectedFile(selectedFile || '');
         setMainOcupation(mainOcupation || '');
         setPhoneNumber(phoneNumber || '');
-        setDescription(description || '');
+        
         setGitHubLink(gitHubLink || '');
         setLinkedinLink(linkedinLink || '');
         setInstagramLink(instagramLink || '');
         setNewDisplayName(displayName || '');
-        setResume(resume || '');
-        setLocation(location || '');
-        setNewSkillAndJobAndUpdateRest({
-          newSkill: skills || [],
-          newJob: jobs || [],
-        });
+        
         setNewFaculty(faculty || '');
-        setNewLanguage(languages || '');
+       
         setNewDepartment(department || '');
         setNewRole(role || '');
-        setNewSasMember(sasMember || '');
-        setNewCode('');
-        setValidation(false);
+       
       } catch (error) {
         console.log('Error retrieving user profile:', error);
       }
@@ -128,68 +110,66 @@ const Profileview = () => {
       await updateProfile(
         currentUser,
         newphoneNumber,
-        newBirthDate,
+        
         newdisplayName,
         newmainOcupation,
-        newdescription,
+        
         newgitHubLink,
         newlinkedinLink,
         newinstagramLink,
-        newlocation,
-        newSkill,
-        newJob,
+        
         newFaculty,
-        newLanguage,
+       
         newDepartment,
         newRole,
-        newSasMember,
+       
       );
-      await UploadResume(newresume, currentUser);
+      // await UploadResume(newresume, currentUser);
       alert('Profile Saved');
     } catch (error) {
       console.log('Error saving profile:', error);
     }
   };
 
-  const setNewSkillAndJobAndUpdateRest = ({ newSkill, newJob }) => {
-    setNewSkill(newSkill);
-    setNewJob(newJob);
-  };
+  // const setNewSkillAndJobAndUpdateRest = ({ newSkill, newJob }) => {
+  //   setNewSkill(newSkill);
+  //   setNewJob(newJob);
+  // };
   const handleProfileImageChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleAddSkill = () => {
-    setNewSkill([...newSkill, '']);
-  };
+  // const handleAddSkill = () => {
+  //   setNewSkill([...newSkill, '']);
+  // };
 
-  const handleSkillChange = (index, value) => {
-    const updatedSkills = [...newSkill];
-    updatedSkills[index] = value;
-    setNewSkill(updatedSkills);
-  };
+  // const handleSkillChange = (index, value) => {
+  //   const updatedSkills = [...newSkill];
+  //   updatedSkills[index] = value;
+  //   setNewSkill(updatedSkills);
+  // };
 
-  const handleRemoveSkill = (index) => {
-    const updatedSkills = [...newSkill];
-    updatedSkills.splice(index, 1);
-    setNewSkill(updatedSkills);
-  };
+  // const handleRemoveSkill = (index) => {
+  //   const updatedSkills = [...newSkill];
+  //   updatedSkills.splice(index, 1);
+  //   setNewSkill(updatedSkills);
+  // };
 
-  const handleAddJob = () => {
-    setNewJob([...newJob, '']);
-  };
+  // const handleAddJob = () => {
+  //   setNewJob([...newJob, '']);
+  // };
 
-  const handleJobChange = (index, value) => {
-    const updatedJobs = [...newJob];
-    updatedJobs[index] = value;
-    setNewJob(updatedJobs);
-  };
+  // const handleJobChange = (index, value) => {
+  //   const updatedJobs = [...newJob];
+  //   updatedJobs[index] = value;
+  //   setNewJob(updatedJobs);
+  // };
 
-  const handleRemoveJob = (index) => {
-    const updatedJobs = [...newJob];
-    updatedJobs.splice(index, 1);
-    setNewJob(updatedJobs);
-  };
+  // const handleRemoveJob = (index) => {
+  //   const updatedJobs = [...newJob];
+  //   updatedJobs.splice(index, 1);
+  //   setNewJob(updatedJobs);
+  // };
 
   const departmentOption = [
     {label: 'Department', option: 'Department'},
@@ -256,7 +236,7 @@ const Profileview = () => {
           placeholder="Edit your Faculty"
         />
       </div>
-      <div className="p-5">
+      {/* <div className="p-5">
         <label className="block mb-2 text-lg font-bold">Known languages:</label>
         <input
           type="text"
@@ -273,7 +253,7 @@ const Profileview = () => {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Edit your Description"
         ></textarea>
-      </div>
+      </div> */}
       <div className="p-5">
         <label className="block mb-2 text-lg font-bold">GitHub Link:</label>
         <input
@@ -301,7 +281,32 @@ const Profileview = () => {
           placeholder="Edit your Instagram Link"
         />
       </div>
-      <div className="p-5">
+      
+      <div className='p-5 input-group-btn search-panel'>
+                  <select option={departmentOption} onChange={(e)=>setNewDepartment(e.target.value)}>
+                      {departmentOption.map((option) => (
+                        <option value={option.option}>{option.label}</option>
+                      ))}
+                  </select>
+              </div>
+      <div className='p-5 input-group-btn search-panel'>
+              <select option={roleOption} onChange={(e)=>setNewRole(e.target.value)}>
+                  {roleOption.map((option) => (
+                    <option value={option.option}>{option.label}</option>
+                  ))}
+              </select>
+                
+              </div>
+              <div className="p-5">
+                <button
+                  onClick={handleProfileUpdate}
+                  className="px-3 py-1 ml-2 text-white bg-green-500 rounded-md"
+                >
+                  Save SAS Membership
+                </button>
+                </div>
+         
+      {/* <div className="p-5">
         <label className="block mb-2 text-lg font-bold">Resume:</label>
         <input type="file" onChange={(e) => setResume(e.target.files[0])} />
       </div>
@@ -430,8 +435,8 @@ const Profileview = () => {
         >
           Save Profile
         </button>
-      </div>
-    </div>
+        </div>*/}
+    </div> 
   );
 };
 

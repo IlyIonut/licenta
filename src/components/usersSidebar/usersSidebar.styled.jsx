@@ -25,13 +25,13 @@ border-radius: 20px;
 background-position:center;
 background-size:cover;
 gap:5px;
-width:300px;
-height:450px;
+width:260px;
+height:400px;
 
     h5 {
         display:inline-block;
         white-space: nowrap;
-        margin-top: 80px;
+        margin-top: 100px;
         margin-bottom: 10px; 
         font-weight: 500; 
         letter-spacing: 0.05em; 
@@ -105,73 +105,3 @@ height:450px;
       }
 `
 
-export const Links = styled.div`
-    display: flex; 
-    margin-left: auto;
-    margin-right: auto; 
-    margin-top: 1000px;
-    margin-bottom: -50px; 
-    justify-content: space-around; 
-    align-items:flex-end;
-    width: 75%; 
-
-
-    @media (min-width: 768px) { 
-    width: 100%; 
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    
-    }
-`
-export const Date = styled.div`
-    padding-top: 1rem;
-    padding-bottom: 1rem; 
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem; 
-    background-color: #E5E7EB; 
-`
-
-export const Button = styled.button`
-    background: rgb(255, 255, 255);
-    color: rgb(255, 87, 74);
-    border: none;
-    outline: none;
-    box-shadow: rgba(244, 67, 54, 0.5) 0px 5px 10px;
-    padding: 15px 60px;
-    cursor: pointer;
-    border-radius: 30px;
-    display: flex;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    width: 100px;
-    font-weight: 500;
-    font-size: 16px;
-    height: 20px;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: 768px) {
-        font-size:8px;
-        height: 15px;
-        font-weight: 500;
-        width:50px;
-        padding: 0px 0px;
-      }
-`
-
-export const ProfileBottom = styled(SideProfile)`
-    background: #fff;
-    color:#999;
-    padding:60px 0;
-    margin-right:-90px;
-    margin-left:-90px;
-    margin-bottom:-40px;
-    border-radious:20px;
-    visibility:hidden;
-    &:hover {
-        opacity:0.8;
-        visibility:visible;
-    }
-`

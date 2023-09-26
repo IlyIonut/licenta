@@ -45,13 +45,12 @@ const Events = () => {
 
     const addEvent = async() => {
         try {
-            // Validate if all required fields are filled
+            
             if (!newTitle || !newDescription || !newDate || !newImage) {
               alert("Please fill all fields.");
               return;
             }
 
-           
             const upImage = await uploadEventImage(newImage);
             const upTerms = newTerms? await uploadEventTerms(newTerms) : '';
         
@@ -66,7 +65,6 @@ const Events = () => {
         
             await createEventDoc(eventData);
             window.location.reload();
-            
         
           } catch (error) {
             console.error("Error adding event document: ", error);
@@ -202,18 +200,12 @@ const Events = () => {
             Terms&Conditions
           </a>
         {location.pathname !== '/about'&& profileData?.role === "Board" && (
-          <Popup trigger={<button className="px-3 py-1 mx-5 text-white bg-red-500 rounded-md" >Delete Event</button>}>
-             <div className='flex flex-col h-auto mx-3 my-3 overflow-hidden bg-white w-fit dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
-                <h2 className="my-3 mx-3 font-semibold">Are you sure you want to delete the event?</h2>
-                <button
-                onClick={() => handleDeleteEvent(eventId, event.image, event.terms)}
-                className="px-3 py-1 mx-5  my-5 text-white bg-red-500 rounded-md"
-                >
-                Delete Event
-                </button>
-            </div>
-        </Popup>
-        )}
+          <button
+            onClick={() => handleDeleteEvent(eventId, event.image, event.terms)}
+            className="px-3 py-1 mx-5 text-white bg-red-500 rounded-md"
+        >
+            Delete Event
+        </button>)}
           </div>
           
          

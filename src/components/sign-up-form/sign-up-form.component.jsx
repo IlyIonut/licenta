@@ -16,11 +16,12 @@ const defaultFormFields = {
   email: '',
   password: '',
   confirmPassword: '',
+  sascode:'',
 };
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { displayName, email, password, confirmPassword, sascode } = formFields;
   const navigate = useNavigate();
 
 
@@ -35,6 +36,10 @@ const SignUpForm = () => {
       alert('passwords do not match');
       return;
     }
+    if(sascode !== 'SASUTCN'){
+      alert('Codul sas este gresit! Optiunea de creare a contului este disponibilă doar pentru membrii SAS UTCN');
+      return;
+    }
 
     try {
       const { user } = await createAuthUserWithEmailAndPassword(
@@ -45,7 +50,7 @@ const SignUpForm = () => {
 
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
-      navigate('/users');
+      navigate('/');
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         alert('Cannot create user, email already in use');
@@ -72,7 +77,7 @@ const SignUpForm = () => {
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label='Display Name'
+          label='Name'
           type='text'
           required
           onChange={handleChange}
@@ -105,6 +110,14 @@ const SignUpForm = () => {
           onChange={handleChange}
           name='confirmPassword'
           value={confirmPassword}
+        />
+        <FormInput
+          label='SAS Code'
+          type='text'
+          required
+          onChange={handleChange}
+          name='sascode'
+          value={sascode}
         />
         <Button type='submit'>Sign Up</Button>
       </form>

@@ -1,0 +1,155 @@
+
+.NavTotal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+
+// NavBar
+.NavBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  background-color: #fafafa;
+  width: 100%;
+
+  @media (max-width: 40em) {
+    height: 80px;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+}
+
+// NavigationContainer
+.NavigationContainer {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  @media (max-width: 768px) {
+    margin-right: 30px;
+  }
+}
+
+// LogoContainer
+.LogoContainer {
+  height: 100%;
+  width: 400px;
+  padding: 25px;
+  display: flex;
+  margin-right: 100px;
+
+  @media (max-width: 40em) {
+    width: 200px;
+    margin-right: -40px;
+  }
+}
+
+// NavLinksContainer
+.NavLinksContainer {
+  width: 1200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 40em) {
+    display: none;
+  }
+}
+
+// NavLink
+.NavLink {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+
+  span {
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+// MobileMenu
+.MobileMenu {
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    transition: 0.4s;
+    left:-100%;
+  }
+}
+.MobileNav{
+    position: fixed;
+    display:flex;
+    background-color: #eee;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    transition: 0.4s;
+    left:-100%;
+    top:80px;
+    .NavLink{
+      background-color: #fafafa;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+}
+// Hamburger
+.Hamburger {
+  display: none;
+  cursor: pointer;
+  margin-top: 30px;
+  margin-right: 30px;
+
+  
+}
+
+// Bar
+.Bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #eee;
+}
+
+@media only screen and (max-width: 600px) {
+  .Hamburger{
+    display: block;
+  }
+  .Hamburger.active .Bar:nth-child(2){
+    opacity: 0;
+  }
+  .Hamburger.active .Bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+  }
+  .Hamburger.active .Bar:nth-child(3){
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .MobileNav.active {
+    left:0;
+  }
+  
+  
+}

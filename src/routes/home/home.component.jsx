@@ -10,7 +10,7 @@ const Home = () => {
     
 <Container>
   <Main/>
-  {/* <Directory /> */}
+  
   <Outlet />
 </Container>
 

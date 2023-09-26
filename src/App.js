@@ -13,19 +13,18 @@ import Events from "./routes/events/events.component";
 import Team from "./routes/team/team.component";
 import ContactUs from "./routes/contactUs/contactUs.component";
 import "./App.css"
-import ParticlesBg from "particles-bg";
+
 
 const App = () => {
   return(
     <div className="content-center bg-black">
-    <ParticlesBg type="cobweb" bg={true} />
+
     <Routes>
       <Route path='/' element={<Navigation/>}>
         <Route index element={<Home/>}/>
         <Route path='about/' element={<AboutSas/>} />
         <Route path='events/' element={<Events/>} />
-        <Route path='team/' element={<Team/>} />
-        <Route path='users/*' element={<UserSidebarPage/>} />
+        {/* <Route path='users/*' element={<UserSidebarPage/>} /> */}
         <Route path="users/profil/:displayName" element={<UserProfil  />} />
         <Route path='contactus/*' element={<ContactUs/>} />
         <Route path='auth' element={<Authentification/>} />

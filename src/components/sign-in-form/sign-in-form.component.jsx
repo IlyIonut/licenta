@@ -35,7 +35,7 @@ const SignInForm = () => {
     try {
       const {user} = await signInAuthUserWithEmailAndPassword(email,password);
       resetFormFields();
-      navigate('/users')
+      navigate('/')
     } catch (error) {
         switch(error.code){
           case 'auth/wrong-password':
@@ -81,7 +81,7 @@ const SignInForm = () => {
         />
         <ButtonsContainer>
         <Button type='submit'>Sign In</Button>
-        <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} >Google sign in</Button>
+        {/* <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} >Google sign in</Button> */}
         </ButtonsContainer>
       </form>
     </SignUpContainer>
