@@ -1,7 +1,8 @@
 import styled, {keyframes} from "styled-components";
 
 export const Container = styled.div`
-
+position:relative;
+z-index:-1;
 display: flex;
 -webkit-box-pack: end;
 justify-content: flex-end;
@@ -18,7 +19,8 @@ export const Logo = styled.div`
  margin:0px;
  display:flex;
  justify-content:center;
- margin-top:-150px;
+ margin-top:-200px;
+ 
  @media only screen and (max-width: 600px) {
     margin-top:0px;
  }

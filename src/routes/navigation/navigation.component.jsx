@@ -27,10 +27,10 @@ const Navigation = () =>{
             <div className="NavBar">
 
             <div className="NavLinksContainer">
-                    <div className="LogoContainer" to='/'>
+                    <Link className="LogoContainer" to='/'>
                     <LogoSas className='w-32 h-auto mx-6'  />
                     <UTCN className='w-32 h-auto'  />
-                    </div>
+                    </Link>
                 
                     <Link className="NavLink" to='/about' >
                             <span>About SAS</span>
