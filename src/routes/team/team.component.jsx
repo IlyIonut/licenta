@@ -2,7 +2,7 @@ import { UserContext } from "../../context/user.context";
 import { useContext, useEffect, useState } from "react";
 import { fetchUsers } from "../../utils/firebase/firebase.utils";
 import UsersSidebar from "../../components/usersSidebar/usersSidebar.component";
-import { OptionMenu, SelectMenu, TeamName, UsersContainer } from "./team.styled";
+import { OptionMenu, SelectMenu, TeamName, UsersContainer, CustomSwiper } from "./team.styled";
 //import Carousel from 'react-elastic-carousel';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -18,6 +18,9 @@ const Team = () => {
 
     const [users, setUsers] = useState([]);
     const [selectedOption, setSelectedOption] = useState('All Members');
+    const [slidesPerView, setSlidesPerView] = useState(4);
+
+  
 
     const options = [
         {label:'All Members' , option:'All Members'},
@@ -41,6 +44,22 @@ const Team = () => {
             }
         }
         getUsers();
+        const updateSlidesPerView = () => {
+            if (window.innerWidth <= 600) {
+              setSlidesPerView(1); // Change to 1 slide per view on mobile
+            } else {
+              setSlidesPerView(4); // Use 4 slides per view for other screen sizes
+            }
+          };
+      
+          // Initial setup
+          updateSlidesPerView();
+          window.addEventListener('resize', updateSlidesPerView);
+
+            // Clean up the event listener on component unmount
+            return () => {
+            window.removeEventListener('resize', updateSlidesPerView);
+            };
     },[]);
 
     const teamfiltered = users.filter((user) => {
@@ -101,10 +120,10 @@ const Team = () => {
                     return <h3>SAT Team</h3>;
             }})()}
         </TeamName>
-        <Swiper className="w-11/12 h-auto"
+        <CustomSwiper className="w-11/12 h-auto"
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={10} 
-            slidesPerView={4} 
+            slidesPerView={slidesPerView} 
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
@@ -114,7 +133,7 @@ const Team = () => {
             <UsersSidebar user={user} />
             </SwiperSlide>
         ))}
-        </Swiper>
+        </CustomSwiper>
         </>
     )
 }

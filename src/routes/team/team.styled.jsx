@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 export const UsersContainer = styled.div`
 display:flex;
@@ -51,4 +53,19 @@ export const OptionMenu = styled.option`
    &:hover {
    background:#666;
  }
+ `
+ export const CustomSwiper = styled(Swiper)`
+   @media (max-width: 767px) {
+      .swiper-container {
+         display:flex;
+         justify-content:center;
+         align-items:center;
+       }
+   
+       .swiper-slide {
+         display:flex;
+         justify-content:center;
+         align-items:center;
+       }
+   }
  `
