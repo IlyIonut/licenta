@@ -82,6 +82,7 @@ const SignInForm = () => {
         <ButtonsContainer>
         <Button type='submit'>Sign In</Button>
         {/* <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle} >Google sign in</Button> */}
+        <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={()=>{navigate('/account')}} >Create Account</Button>
         </ButtonsContainer>
       </form>
     </SignUpContainer>

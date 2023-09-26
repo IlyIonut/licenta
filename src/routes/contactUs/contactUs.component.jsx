@@ -4,7 +4,7 @@ import {AiFillFacebook, AiFillLinkedin, AiFillInstagram} from 'react-icons/ai'
 
 const ContactUs = () => {
     return(
-            <div className='flex flex-col h-auto my-10 overflow-hidden bg-white w-96 dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+            <div className='flex flex-col w-auto h-auto my-10 overflow-hidden bg-white sm:w-96 dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
                 <div className="flex items-center justify-center my-5 ml-6">
                    <LogoSas className='w-24 h-12'  />
                    <UTCN className='w-24 h-12 mx-2'  />

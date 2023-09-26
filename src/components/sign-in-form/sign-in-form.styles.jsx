@@ -8,6 +8,9 @@ export const SignUpContainer = styled.div`
     h2{
         margin:10px 0;
     }
+    @media only screen and (max-width:600px){
+        width:100%;
+    }
 `
 export const ButtonsContainer = styled.div`
         display:flex;

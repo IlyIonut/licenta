@@ -13,6 +13,7 @@ import Events from "./routes/events/events.component";
 import Team from "./routes/team/team.component";
 import ContactUs from "./routes/contactUs/contactUs.component";
 import "./App.css"
+import CreateAccount from "./routes/createAcc/createAccount.component";
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="users/profil/:displayName" element={<UserProfil  />} />
         <Route path='contactus/*' element={<ContactUs/>} />
         <Route path='auth' element={<Authentification/>} />
+        <Route path='account' element={<CreateAccount/>} />
         <Route path='checkout' element={<Checkout/>} />
         <Route path='myprofil' element={<Profil/>} />
       </Route>

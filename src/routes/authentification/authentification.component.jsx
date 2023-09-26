@@ -8,7 +8,6 @@ const Authentification = () => {
     return (
         <div className="authentification-container">
             <SignInForm/>
-            <SignUpForm/>
             <Outlet/>
         </div>
     );

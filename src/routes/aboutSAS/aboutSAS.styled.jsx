@@ -23,12 +23,12 @@ export const AboutContainer = styled.div`
     };
     @media only screen and (max-width: 600px) {
         width:100%;
-        padding:40px 40px;
+        padding:30px 30px;
         justify-content:center;
         align-items:center;
         h3{
-            font-size: 18px ;
-            line-height: 26px;
+            font-size: 15px ;
+            line-height: 24px;
         }
         h5{
             font-size: 14px ;
@@ -47,6 +47,10 @@ export const Title = styled.h2`
     font-weight:bold;
     margin-top:20px;
     margin-bottom:20px;
+    @media only screen and (max-width:600px){
+        font-size:26px;
+        margin-top:10px;
+    }
     
 `
 export const CardContainer = styled.div`
@@ -70,7 +74,7 @@ export const Card = styled.div`
     padding:10px;
     background-color:#fafafa;
     overflow:hidden;
-    width:14rem;
+    width:20rem;
     border-radius:1rem;
     box-shadow: 0 0 10px #313131;
     @media only screen and (max-width:600px){
@@ -78,6 +82,7 @@ export const Card = styled.div`
             font-size:12px;
             margin-bottom:10px;
         }
+        width:15rem;
         margin-top:40px;
         margin-bottom:40px;
         height:400px;

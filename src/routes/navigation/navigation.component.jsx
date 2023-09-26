@@ -27,7 +27,7 @@ const Navigation = () =>{
             <div className="NavBar">
 
             <div className="NavLinksContainer">
-                    <Link className="LogoContainer" to='/'>
+                    <Link className="LogoContainer" to='/' >
                     <LogoSas className='w-32 h-auto mx-6'  />
                     <UTCN className='w-32 h-auto'  />
                     </Link>
@@ -60,23 +60,23 @@ const Navigation = () =>{
                 </div>
                     
               <div className="MobileMenu" >
-                    <Link className="LogoContainer" to='/'>
+                    <Link className="LogoContainer" to='/' >
                       <LogoSas className='w-12 h-auto mx-5'  />
                       <UTCN className='w-12 h-auto'  />
                     </Link>
               <div className={`MobileNav ${menuOpen ? 'active' : ''}`}>
-                <Link className="NavLink" to='/about' >
+                <Link className="NavLink" to='/about'onClick={closeMenu} >
                             <span>About SAS</span>
                     </Link>
-                    <Link className="NavLink" to='/events' >
+                    <Link className="NavLink" to='/events'onClick={closeMenu} >
                             <span>Events</span>
                     </Link>
-                    <Link className="NavLink" to='/contactus' >
+                    <Link className="NavLink" to='/contactus' onClick={closeMenu}>
                             <span>Contact Us</span>
                     </Link>
                     {
                         currentUser ? (
-                            <Link className="NavLink" to='/myprofil' >
+                            <Link className="NavLink" to='/myprofil'onClick={closeMenu} >
                             <span>Profile</span>
                             </Link>
                         ) : null
@@ -84,9 +84,12 @@ const Navigation = () =>{
                     
                     {
                         currentUser ? (
-                            <Link className="NavLink" as='span' onClick={signOutUser} ><span>SIGN OUT</span></Link>)
+                            <Link className="NavLink" as='span' onClick={()=>
+                              {signOutUser();
+                              closeMenu();
+                            }} ><span>SIGN OUT</span></Link>)
                             :
-                            (<Link className="NavLink" to='/auth' ><span>SIGN IN</span></Link>)
+                            (<Link className="NavLink" to='/auth' onClick={closeMenu}><span>SIGN IN</span></Link>)
                     }
                   </div>
                 </div>
