@@ -92,8 +92,8 @@ const Events = () => {
               Add an Event
             </button>
             </div>
-        } position={"right top"} >
-            <div className='flex flex-wrap h-auto mx-3 my-3 overflow-hidden bg-white w-fit dark:bg-dark-500 rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
+        } position={"bottom center"} >
+            <div className='popUpContainer'>
                 <div className='flex flex-col justify-between mx-3 my-3'>
                     <div className='flex p-2'>
                         <label className="block px-3 mb-2 text-lg font-bold">Title*:</label>
