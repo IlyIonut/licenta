@@ -30,10 +30,11 @@ const Main = () =>  {
 
     return (
       <Container className="w-4/5">
-        <Col>
         <Logo>
           <SAS className="w-3/5 h-auto"/> 
         </Logo>
+        <Col>
+        
           
           <h3>Societatea Antreprenorială Studențească</h3>
           <h4>Explore new business ideas!</h4>

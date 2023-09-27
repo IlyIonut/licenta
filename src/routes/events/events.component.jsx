@@ -1,5 +1,4 @@
-import EventImg from "../../assets/demoday2023.png"
-import { Image, Line, Container  } from "./events.styled";
+import "./events.styles.scss"
 
 import { EventsContext } from "../../context/events.context";
 import { useEffect, useState, useContext } from "react";
@@ -174,17 +173,17 @@ const Events = () => {
           return null;
         }
         return(
-        <div key={eventId} className="flex flex-col items-center justify-between w-full my-5">
-          <div className='flex items-center justify-between w-5/6 my-5 overflow-hidden bg-white h-fit dark:bg-dark-500 lg:rounded-2xl shadow-custom-light dark:shadow-custom-dark'>
-            <Image className="" src={event.image} alt='event' />
-            <Line className="" />
-            <Container className="flex flex-col px-5 py-1 h-72">
+        <div key={eventId} className="pageContainer">
+          <div className='eventContainer'>
+            <img className="image" src={event.image} alt='event' />
+            <div className="line" />
+            <div className="container">
               <h3>{event.eventName}</h3>
               <p>{event.description}</p>
-            </Container>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center justify-around my-5">
-            <h2 className="mx-5 font-semibold">Start Date:{event.startDate}</h2>
+          <div className="buttonContainer">
+            <h2>Start Date:{event.startDate}</h2>
             <button
             onClick={() => window.open(event.join, '_blank', 'noopener noreferrer')}
             className="px-3 py-1 mx-5 text-white bg-green-500 rounded-md"
