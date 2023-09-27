@@ -1,0 +1,44 @@
+.editContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 30px;
+    .editSpace{
+        display: flex;
+        flex-wrap: wrap;
+        input{
+            padding: 10px;
+        }
+    }
+    .buttonPanel{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .selectPanel{
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            select{
+                padding: 10px;
+                margin: 10px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .editContainer{
+        padding: 0px;
+        .editSpace{
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+            margin-left: 40px;
+            
+        }
+    }
+}

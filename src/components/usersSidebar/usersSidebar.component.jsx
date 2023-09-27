@@ -75,9 +75,9 @@ const UsersSidebar = ({user}) => {
             <p className='px-2 py-1 rounded-full bg-dark-200 dark:bg-dark-200'>{mainOccupation}</p>
             <div className='dataContainer'>
               <div className='contact'>
-                  <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Github'/></a>
-                  <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Linkedin'/></a>
-                  <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Instagram' /></a>
+                  <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Github'/></a>
+                  <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Linkedin'/></a>
+                  <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Instagram' /></a>
               </div>
               <h3>{faculty}</h3>
             </div>

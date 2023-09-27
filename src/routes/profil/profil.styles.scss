@@ -1,0 +1,29 @@
+.profilContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:space-around;
+    margin-top: 30px;
+    width: 1200px;
+    .sideBar{
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profileView{
+        width: 800px;
+    }
+
+}
+
+@media only screen and (max-width:600px) {
+    .profilContainer{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        .profileView{
+            width: 100%;
+        }
+    }
+}

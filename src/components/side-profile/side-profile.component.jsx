@@ -1,7 +1,7 @@
 import {AiFillGithub, AiFillLinkedin, AiFillInstagram} from 'react-icons/ai'
 import { useState, useContext , useEffect} from 'react'
 import { UserContext } from '../../context/user.context'
-import {  SideProfile, Button,  } from './side-profile.styled'
+import "./side-profile.styles.scss"
 import { getUserData } from '../../utils/firebase/firebase.utils'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,7 @@ const Sidebar = () => {
       instagramLink:'',
       resume:'',
       location:'',
+      faculty:'',
 
     });
   
@@ -39,25 +40,23 @@ const Sidebar = () => {
       getUserProfile();
     }, [currentUser, profileData]);
   
-    const { profileImage, displayName, mainOccupation ,  gitHubLink, linkedinLink, instagramLink} = profileData;
+    const { profileImage, displayName, mainOccupation ,  gitHubLink, linkedinLink, instagramLink,faculty} = profileData;
     
     return(
-      <SideProfile
+      <div className='sideProfile'
       style={{ backgroundImage: `url(${profileImage})`}}>
             
-            <div className='flex-column justify-around items-end content-end w-1/3 mx-auto text-white align-bottom md:w-full'>
-                <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='w-10 h-10 bg-amber-600 rounded-full cursor-pointer' aria-label='Github'/></a>
-                <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='w-10 h-10 bg-amber-600 rounded-full cursor-pointer' aria-label='Linkedin'/></a>
-                <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='w-10 h-10 bg-amber-600 rounded-full cursor-pointer' aria-label='Instagram' /></a>
-            </div>
             <h5 className='inline-block font-medium tracking-wider text-3x1 font-kaushan'>{displayName}</h5>
             <p className='px-2 py-1 rounded-full bg-dark-200 dark:bg-dark-200'>{mainOccupation}</p>
-              <Link to={`/users/profil/${displayName}`}>
-                  <Button>
-                  <span>View Profile</span>
-                  </Button>
-              </Link>
-        </SideProfile>
+            <div className='dataContainer'>
+              <div className='contact'>
+                  <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Github'/></a>
+                  <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Linkedin'/></a>
+                  <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='w-8 h-8 rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 ' aria-label='Instagram' /></a>
+              </div>
+              <h3>{faculty}</h3>
+            </div>
+      </div>
     )
 }
 
