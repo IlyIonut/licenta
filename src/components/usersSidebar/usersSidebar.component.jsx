@@ -5,7 +5,7 @@ import { useState, useContext , useEffect} from 'react'
 import { UserContext } from '../../context/user.context'
 import { getUserData } from '../../utils/firebase/firebase.utils'
 import {useTheme} from 'next-themes'
-import { Card, SideProfile, Button } from './usersSidebar.styled'
+import "./usersSidebar.styles.scss";
 import { Link } from 'react-router-dom'
 import UserProfil from '../../routes/userprofil/userprofil.component'
 //import Image from 'next/legacy/image'
@@ -68,16 +68,20 @@ const UsersSidebar = ({user}) => {
     const userId = user.id || user.uid;
 
     return(
-      <SideProfile
+      <div className='sideProfile'
       style={{ backgroundImage: `url(${profileImage})`}}>
-            <div className='items-end content-end justify-around w-1/3 text-white align-bottom flex-column md:w-full '>
-                <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Github'/></a>
-                <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Linkedin'/></a>
-                <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Instagram' /></a>
-            </div>
+            
             <h5 className='inline-block font-medium tracking-wider text-3x1 font-kaushan'>{displayName}</h5>
             <p className='px-2 py-1 rounded-full bg-dark-200 dark:bg-dark-200'>{mainOccupation}</p>
-        </SideProfile>
+            <div className='dataContainer'>
+              <div className='contact'>
+                  <a href={gitHubLink} target="_blank" rel="noreferrer"><AiFillGithub className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Github'/></a>
+                  <a href={linkedinLink} target="_blank" rel="noreferrer"><AiFillLinkedin className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Linkedin'/></a>
+                  <a href={instagramLink} target="_blank" rel="noreferrer"><AiFillInstagram className='rounded-full cursor-pointer lg:w-8 lg:h-8 bg-amber-600 sm:w-4 sm:h-4' aria-label='Instagram' /></a>
+              </div>
+              <h3>{faculty}</h3>
+            </div>
+      </div>
     )
   }
 
