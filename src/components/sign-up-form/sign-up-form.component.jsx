@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 import FormInput from '../form-input/form-input.component';
-import Button from '../button/button.component';
+
 
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
-import {SignUpContainer} from './sign-up-form.styles.jsx';
+import {SignUpContainer, Button} from './sign-up-form.styles.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 
 const defaultFormFields = {
@@ -119,8 +119,9 @@ const SignUpForm = () => {
           name='sascode'
           value={sascode}
         />
-        <Button type='submit'>Sign Up</Button>
+        
       </form>
+      <Button type='submit'>Sign Up</Button>
     </SignUpContainer>
   );
 };

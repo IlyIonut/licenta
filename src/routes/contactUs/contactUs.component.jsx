@@ -11,9 +11,9 @@ const ContactUs = () => {
                 </div>
                 <h1 className="flex justify-center my-4 text-3xl font-bold">Contact Us</h1>
                 <div className="flex justify-center my-4 text-cyan-600">
-                    <a href="https://www.linkedin.com/company/societatea-antreprenorial%C4%83-studen%C8%9Beasc%C4%83-utcn/" target="_blank" rel="noreferrer"><AiFillLinkedin className='mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Linkedin'/></a>
-                    <a href="https://www.instagram.com/sasutcn/" target="_blank" rel="noreferrer"><AiFillInstagram className='mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Instagram' /></a>
-                    <a href="https://www.facebook.com/sasutcn" target="_blank" rel="noreferrer"><AiFillFacebook className='mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Facebook' /></a>
+                    <a href="https://www.linkedin.com/company/societatea-antreprenorial%C4%83-studen%C8%9Beasc%C4%83-utcn/" target="_blank" rel="noreferrer"><AiFillLinkedin className='w-8 h-8 mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Linkedin'/></a>
+                    <a href="https://www.instagram.com/sasutcn/" target="_blank" rel="noreferrer"><AiFillInstagram className='w-8 h-8 mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Instagram' /></a>
+                    <a href="https://www.facebook.com/sasutcn" target="_blank" rel="noreferrer"><AiFillFacebook className='w-8 h-8 mx-5 rounded-full cursor-pointer lg:w-12 lg:h-12 sm:w-4 sm:h-4' aria-label='Facebook' /></a>
                 </div>
                 <div className="flex flex-col items-center mx-7">
                     <div className="flex flex-col items-center mb-2">

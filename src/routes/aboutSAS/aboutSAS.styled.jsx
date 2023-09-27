@@ -27,11 +27,11 @@ export const AboutContainer = styled.div`
         justify-content:center;
         align-items:center;
         h3{
-            font-size: 15px ;
+            font-size: 14px ;
             line-height: 24px;
         }
         h5{
-            font-size: 14px ;
+            font-size: 12px ;
             line-height: 22px;
         }
         p{
@@ -48,7 +48,7 @@ export const Title = styled.h2`
     margin-top:20px;
     margin-bottom:20px;
     @media only screen and (max-width:600px){
-        font-size:26px;
+        font-size:22px;
         margin-top:10px;
     }
     
