@@ -84,7 +84,7 @@ const Navigation = () =>{
                     
                     {
                         currentUser ? (
-                            <Link className="NavLink" as='span' onClick={()=>
+                            <Link className="NavLink" as='span' to='/' onClick={()=>
                               {signOutUser();
                               closeMenu();
                             }} ><span>SIGN OUT</span></Link>)

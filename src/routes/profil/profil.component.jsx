@@ -15,7 +15,7 @@ const Profil = () => {
 
     useEffect(() => {
         if (!currentUser) {
-          navigate('/auth'); // Replace '/auth' with the actual route for your authentication page
+          navigate('/home'); // Replace '/auth' with the actual route for your authentication page
         }
       }, [currentUser, navigate]);
 

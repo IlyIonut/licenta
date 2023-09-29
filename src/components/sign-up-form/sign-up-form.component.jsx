@@ -75,7 +75,7 @@ const SignUpForm = () => {
     <SignUpContainer>
       <h2>Don't have an account?</h2>
       <span>Sign up with your email and password</span>
-      <form onSubmit={handleSubmit}>
+      <form >
         <FormInput
           label='Name'
           type='text'
@@ -119,9 +119,9 @@ const SignUpForm = () => {
           name='sascode'
           value={sascode}
         />
-        
+      
       </form>
-      <Button type='submit'>Sign Up</Button>
+      <Button type='submit' onClick={handleSubmit}>Sign Up</Button>
     </SignUpContainer>
   );
 };
