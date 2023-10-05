@@ -29,7 +29,6 @@ const Events = () => {
       if (eventsMap && Object.keys(eventsMap).length > 0) {
         setLoading(false);
       }
-      console.log(eventsMap)
       const getUserProfile = async () => {
         try {
           const fetchedProfileData = await getUserData(currentUser);

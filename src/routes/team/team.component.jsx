@@ -63,26 +63,20 @@ const Team = () => {
     },[]);
 
     const teamfiltered = users.filter((user) => {
-        if(user.sasMember === true) {
-            switch (selectedOption){
+        
+        switch (selectedOption) {
             case 'All Members':
                 return true;
             case 'Board':
-                return user.role.includes(selectedOption);
             case 'Volunteers':
-                return user.role.includes(selectedOption);
             case 'Mentors':
-                return user.role.includes(selectedOption);
+                return user.role?.includes(selectedOption);
             case 'Media':
-                return user.department.includes(selectedOption);
             case 'HR':
-                return user.department.includes(selectedOption);
             case 'Events':
-                return user.department.includes(selectedOption);
             case 'Mentoring':
-                return user.department.includes(selectedOption);
+                return user.department?.includes(selectedOption);
         }
-    }
 
     });
     
