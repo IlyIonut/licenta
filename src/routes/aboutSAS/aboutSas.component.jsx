@@ -5,6 +5,7 @@ import {ReactComponent as Info} from '../../assets/info.svg'
 import {ReactComponent as Event} from '../../assets/event.svg'
 import {ReactComponent as Mentor} from '../../assets/Mentor.svg'
 import {ReactComponent as Idea} from '../../assets/ideas.svg'
+import Review from "../review/review.component";
 
 
 const AboutSas = () => {
@@ -46,6 +47,7 @@ const AboutSas = () => {
         <Team/>
         <h3 className="p-5 mt-5 mb-10 text-4xl font-bold ">Events</h3>
         <Events/>
+        <Review/>
         </>
     )
 }

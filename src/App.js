@@ -14,6 +14,7 @@ import Team from "./routes/team/team.component";
 import ContactUs from "./routes/contactUs/contactUs.component";
 import "./App.css"
 import CreateAccount from "./routes/createAcc/createAccount.component";
+import SAScast from "./routes/SAScast/SAScast.component";
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route index element={<Home/>}/>
         <Route path='about/' element={<AboutSas/>} />
         <Route path='events/' element={<Events/>} />
+        <Route path='SAScast/' element={<SAScast/>} />
         {/* <Route path='users/*' element={<UserSidebarPage/>} /> */}
         <Route path="users/profil/:displayName" element={<UserProfil  />} />
         <Route path='contactus/*' element={<ContactUs/>} />

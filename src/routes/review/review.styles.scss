@@ -1,0 +1,58 @@
+.review-card {
+    max-width: 300px;
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/licenta-35e28.appspot.com/o/1619681882791.jpeg?alt=media&token=acc30a15-0910-445f-ba7f-be354666f390');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .review-background {
+    flex: 1;
+    
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .review-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .review-header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .review-rating {
+    font-size: 24px;
+    color: #f39c12;
+    margin-bottom: 10px;
+  }
+
+  .review-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .review-text {
+    color: #555;
+    line-height: 1.6;
+  }

@@ -38,6 +38,9 @@ const Navigation = () =>{
                     <Link className="NavLink" to='/events' >
                             <span>Events</span>
                     </Link>
+                    <Link className="NavLink" to='/SAScast' >
+                            <span>SAScast</span>
+                    </Link>
                     <Link className="NavLink" to='/contactus' >
                             <span>Contact Us</span>
                     </Link>
